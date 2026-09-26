@@ -1,0 +1,849 @@
+{
+  "estimands": {
+    "conditional": {
+      "participant_weighted": {
+        "n": 138,
+        "mean": 0.034762254188677566,
+        "median": 0.030598385534769457,
+        "q1": 0.017107925862483195,
+        "q3": 0.053493186892214994,
+        "sd": 0.03018193191115447,
+        "se": 0.0025692566650286123,
+        "ci": [
+          0.02968172586685844,
+          0.039842782510496694
+        ],
+        "t": 13.530082323748857,
+        "p": 5.1110927659420325e-27,
+        "wilcoxon_p": 2.521217831803389e-20,
+        "prob_gt_0": 0.8985507246376812,
+        "prob_gt_001": 0.8333333333333334,
+        "prob_gt_002": 0.7101449275362319
+      },
+      "target_weighted": {
+        "n_subjects": 138,
+        "n_targets": 1001,
+        "mean": 0.0346451259750213,
+        "ci": [
+          0.029273015411390515,
+          0.039955297095365154
+        ],
+        "ci_method": "participant-cluster percentile bootstrap, 5000 resamples"
+      },
+      "dataset_weighted": {
+        "n": 6,
+        "mean": 0.029534806375316285,
+        "median": 0.03020933293495946,
+        "q1": 0.01874181034212359,
+        "q3": 0.036564034184358524,
+        "sd": 0.016386294140101478,
+        "se": 0.006689676569734446,
+        "ci": [
+          0.012338445298875074,
+          0.0467311674517575
+        ],
+        "t": 4.414982707675016,
+        "p": 0.006924300659140198,
+        "wilcoxon_p": 0.03125,
+        "prob_gt_0": 1.0,
+        "prob_gt_001": 0.8333333333333334,
+        "prob_gt_002": 0.6666666666666666
+      },
+      "random_effects": {
+        "k": 6,
+        "estimate": 0.030349220567890314,
+        "ci": [
+          0.014435529247658483,
+          0.04626291188812215
+        ],
+        "prediction_interval": [
+          -0.010022326634905952,
+          0.07072076777068659
+        ],
+        "tau2": 0.00017310819866843015,
+        "i2": 0.7472511879976357,
+        "Q": 19.78248665300642,
+        "method": "REML variance component; t interval across six datasets",
+        "ci_formula": "mu +/- t_(k-1, .975) / sqrt(sum(w)); w=1/(v+tau2)",
+        "prediction_interval_formula": "mu +/- t_(k-2, .975)*sqrt(tau2+1/sum(w))",
+        "hksj_sensitivity": {
+          "scale": 1.068953593894697,
+          "se": 0.006400573973606737,
+          "ci": [
+            0.013896021373690292,
+            0.04680241976209033
+          ],
+          "formula": "mu +/- t_(k-1, .975)*sqrt(q/sum(w)); q=sum(w*(y-mu)^2)/(k-1)"
+        }
+      }
+    },
+    "all_origin": {
+      "participant_weighted": {
+        "n": 138,
+        "mean": 0.029723723961667437,
+        "median": 0.02618449203204809,
+        "q1": 0.013853865871824416,
+        "q3": 0.04574340127313525,
+        "sd": 0.025677896401383057,
+        "se": 0.00218584770078239,
+        "ci": [
+          0.02540136049282168,
+          0.03404608743051319
+        ],
+        "t": 13.598259362273179,
+        "p": 3.4370819349694255e-27,
+        "wilcoxon_p": 2.6759235725651038e-20,
+        "prob_gt_0": 0.8985507246376812,
+        "prob_gt_001": 0.8188405797101449,
+        "prob_gt_002": 0.6666666666666666
+      },
+      "target_weighted": {
+        "n_subjects": 138,
+        "n_targets": 1139,
+        "mean": 0.030447560229145146,
+        "ci": [
+          0.02570276569063167,
+          0.03510466897107625
+        ],
+        "ci_method": "participant-cluster percentile bootstrap, 5000 resamples"
+      },
+      "dataset_weighted": {
+        "n": 6,
+        "mean": 0.02402179887457724,
+        "median": 0.026194781583734263,
+        "q1": 0.011378841115864315,
+        "q3": 0.03293478644848957,
+        "sd": 0.0148350381818279,
+        "se": 0.006056378976697375,
+        "ci": [
+          0.00845338108734932,
+          0.039590216661805164
+        ],
+        "t": 3.96636322908522,
+        "p": 0.010674827796605276,
+        "wilcoxon_p": 0.03125,
+        "prob_gt_0": 1.0,
+        "prob_gt_001": 0.6666666666666666,
+        "prob_gt_002": 0.6666666666666666
+      },
+      "random_effects": {
+        "k": 6,
+        "estimate": 0.024132323467756782,
+        "ci": [
+          0.009230350651147102,
+          0.039034296284366464
+        ],
+        "prediction_interval": [
+          -0.015548938513794755,
+          0.06381358544930832
+        ],
+        "tau2": 0.00017065783365242867,
+        "i2": 0.8373777765156474,
+        "Q": 30.746105254679993,
+        "method": "REML variance component; t interval across six datasets",
+        "ci_formula": "mu +/- t_(k-1, .975) / sqrt(sum(w)); w=1/(v+tau2)",
+        "prediction_interval_formula": "mu +/- t_(k-2, .975)*sqrt(tau2+1/sum(w))",
+        "hksj_sensitivity": {
+          "scale": 1.042620463058216,
+          "se": 0.005919369557550077,
+          "ci": [
+            0.008916099604699988,
+            0.039348547330813576
+          ],
+          "formula": "mu +/- t_(k-1, .975)*sqrt(q/sum(w)); q=sum(w*(y-mu)^2)/(k-1)"
+        }
+      }
+    }
+  },
+  "practical": {
+    "model_selection_changes": 19,
+    "model_selection_change_percent": 13.768115942028986,
+    "csp_to_ts": 15,
+    "ts_to_csp": 4,
+    "ties_loso": 0,
+    "ties_expanding": 0,
+    "bilateral_margin_sensitivity": [
+      {
+        "bilateral_margin_threshold": 0.0,
+        "n": 19,
+        "percent": 13.768115942028986
+      },
+      {
+        "bilateral_margin_threshold": 0.005,
+        "n": 11,
+        "percent": 7.971014492753622
+      },
+      {
+        "bilateral_margin_threshold": 0.01,
+        "n": 6,
+        "percent": 4.3478260869565215
+      },
+      {
+        "bilateral_margin_threshold": 0.02,
+        "n": 1,
+        "percent": 0.7246376811594203
+      }
+    ],
+    "direction": "LOSO observed higher-AUC decoder to expanding-window observed higher-AUC decoder",
+    "interpretation": "Observed participant mean AUC ordering; not prospective model selection or participant-specific uncertainty",
+    "by_decoder": {
+      "csp_lda": {
+        "n": 138,
+        "mean": 0.03644166607943591,
+        "median": 0.031937009875941266,
+        "q1": 0.011201923076923056,
+        "q3": 0.061742318794956244,
+        "sd": 0.04609821153681469,
+        "se": 0.003924140362701179,
+        "ci": [
+          0.028681948444812238,
+          0.04420138371405957
+        ],
+        "t": 9.286534810480456,
+        "p": 3.2284960544435537e-16,
+        "wilcoxon_p": 5.765231441184359e-16,
+        "prob_gt_0": 0.855072463768116,
+        "prob_gt_001": 0.7608695652173914,
+        "prob_gt_002": 0.6521739130434783
+      },
+      "ts_lr": {
+        "n": 138,
+        "mean": 0.03308284229791921,
+        "median": 0.029887454264169194,
+        "q1": 0.016033370707795876,
+        "q3": 0.04910558308896848,
+        "sd": 0.026523267266642617,
+        "se": 0.002257810447778927,
+        "ci": [
+          0.028618177447040167,
+          0.03754750714879826
+        ],
+        "t": 14.652621671789921,
+        "p": 7.77311339032017e-30,
+        "wilcoxon_p": 1.005488706165925e-22,
+        "prob_gt_0": 0.9347826086956522,
+        "prob_gt_001": 0.7898550724637681,
+        "prob_gt_002": 0.6739130434782609
+      }
+    },
+    "threshold_070_loso_only": 16,
+    "threshold_070_forward_only": 1,
+    "threshold_075_loso_only": 31,
+    "threshold_075_forward_only": 0,
+    "by_estimand": {
+      "conditional": {
+        "model_selection_changes": 19,
+        "model_selection_change_percent": 13.768115942028986,
+        "csp_to_ts": 15,
+        "ts_to_csp": 4,
+        "ties_loso": 0,
+        "ties_expanding": 0,
+        "bilateral_margin_sensitivity": [
+          {
+            "bilateral_margin_threshold": 0.0,
+            "n": 19,
+            "percent": 13.768115942028986
+          },
+          {
+            "bilateral_margin_threshold": 0.005,
+            "n": 11,
+            "percent": 7.971014492753622
+          },
+          {
+            "bilateral_margin_threshold": 0.01,
+            "n": 6,
+            "percent": 4.3478260869565215
+          },
+          {
+            "bilateral_margin_threshold": 0.02,
+            "n": 1,
+            "percent": 0.7246376811594203
+          }
+        ],
+        "direction": "LOSO observed higher-AUC decoder to expanding-window observed higher-AUC decoder",
+        "interpretation": "Observed participant mean AUC ordering; not prospective model selection or participant-specific uncertainty",
+        "by_decoder": {
+          "csp_lda": {
+            "n": 138,
+            "mean": 0.03644166607943591,
+            "median": 0.031937009875941266,
+            "q1": 0.011201923076923056,
+            "q3": 0.061742318794956244,
+            "sd": 0.04609821153681469,
+            "se": 0.003924140362701179,
+            "ci": [
+              0.028681948444812238,
+              0.04420138371405957
+            ],
+            "t": 9.286534810480456,
+            "p": 3.2284960544435537e-16,
+            "wilcoxon_p": 5.765231441184359e-16,
+            "prob_gt_0": 0.855072463768116,
+            "prob_gt_001": 0.7608695652173914,
+            "prob_gt_002": 0.6521739130434783
+          },
+          "ts_lr": {
+            "n": 138,
+            "mean": 0.03308284229791921,
+            "median": 0.029887454264169194,
+            "q1": 0.016033370707795876,
+            "q3": 0.04910558308896848,
+            "sd": 0.026523267266642617,
+            "se": 0.002257810447778927,
+            "ci": [
+              0.028618177447040167,
+              0.03754750714879826
+            ],
+            "t": 14.652621671789921,
+            "p": 7.77311339032017e-30,
+            "wilcoxon_p": 1.005488706165925e-22,
+            "prob_gt_0": 0.9347826086956522,
+            "prob_gt_001": 0.7898550724637681,
+            "prob_gt_002": 0.6739130434782609
+          }
+        },
+        "threshold_070_loso_only": 16,
+        "threshold_070_forward_only": 1,
+        "threshold_075_loso_only": 31,
+        "threshold_075_forward_only": 0
+      },
+      "all_origin": {
+        "model_selection_changes": 14,
+        "model_selection_change_percent": 10.144927536231885,
+        "csp_to_ts": 10,
+        "ts_to_csp": 4,
+        "ties_loso": 0,
+        "ties_expanding": 1,
+        "bilateral_margin_sensitivity": [
+          {
+            "bilateral_margin_threshold": 0.0,
+            "n": 14,
+            "percent": 10.144927536231885
+          },
+          {
+            "bilateral_margin_threshold": 0.005,
+            "n": 7,
+            "percent": 5.072463768115942
+          },
+          {
+            "bilateral_margin_threshold": 0.01,
+            "n": 1,
+            "percent": 0.7246376811594203
+          },
+          {
+            "bilateral_margin_threshold": 0.02,
+            "n": 1,
+            "percent": 0.7246376811594203
+          }
+        ],
+        "direction": "LOSO observed higher-AUC decoder to expanding-window observed higher-AUC decoder",
+        "interpretation": "Observed participant mean AUC ordering; not prospective model selection or participant-specific uncertainty",
+        "by_decoder": {
+          "csp_lda": {
+            "n": 138,
+            "mean": 0.03091428834243102,
+            "median": 0.026730730937720174,
+            "q1": 0.009803041287122855,
+            "q3": 0.05344429083412986,
+            "sd": 0.039469099762042666,
+            "se": 0.003359832893560739,
+            "ci": [
+              0.024270449910615666,
+              0.03755812677424637
+            ],
+            "t": 9.201138664270937,
+            "p": 5.278620455911712e-16,
+            "wilcoxon_p": 4.282009649650694e-16,
+            "prob_gt_0": 0.855072463768116,
+            "prob_gt_001": 0.7463768115942029,
+            "prob_gt_002": 0.6159420289855072
+          },
+          "ts_lr": {
+            "n": 138,
+            "mean": 0.02853315958090385,
+            "median": 0.0257221719265918,
+            "q1": 0.012923678158497008,
+            "q3": 0.042497023809523776,
+            "sd": 0.02246329498928554,
+            "se": 0.001912202656198959,
+            "ci": [
+              0.024751910364306653,
+              0.032314408797501054
+            ],
+            "t": 14.921619049322697,
+            "p": 1.6680022694324734e-30,
+            "wilcoxon_p": 9.639998211150507e-23,
+            "prob_gt_0": 0.9347826086956522,
+            "prob_gt_001": 0.782608695652174,
+            "prob_gt_002": 0.6304347826086957
+          }
+        },
+        "threshold_070_loso_only": 13,
+        "threshold_070_forward_only": 1,
+        "threshold_075_loso_only": 22,
+        "threshold_075_forward_only": 0
+      }
+    },
+    "negative_by_dataset_conditional": {
+      "BNCI2014_004": 0.2222222222222222,
+      "Kumar2024": 0.0,
+      "Ma2020": 0.12,
+      "Stieger2021": 0.04838709677419355,
+      "Zhou2016": 0.5,
+      "Zhou2020": 0.2
+    },
+    "negative_by_dataset_all_origin": {
+      "BNCI2014_004": 0.2222222222222222,
+      "Kumar2024": 0.0,
+      "Ma2020": 0.12,
+      "Stieger2021": 0.04838709677419355,
+      "Zhou2016": 0.5,
+      "Zhou2020": 0.2
+    }
+  },
+  "common_support_contrasts": {
+    "primary_conditional": {
+      "total": {
+        "n": 138,
+        "mean": 0.03476225418867759,
+        "median": 0.030598385534769467,
+        "q1": 0.01710792586248321,
+        "q3": 0.05349318689221503,
+        "sd": 0.03018193191115448,
+        "se": 0.002569256665028613,
+        "ci": [
+          0.02968172586685846,
+          0.039842782510496715
+        ],
+        "t": 13.530082323748863,
+        "p": 5.111092765941851e-27,
+        "wilcoxon_p": 2.521217831803389e-20,
+        "prob_gt_0": 0.8985507246376812,
+        "prob_gt_001": 0.8333333333333334,
+        "prob_gt_002": 0.7101449275362319,
+        "left": "loso",
+        "right": "forward_expanding",
+        "n_fits": 2002
+      },
+      "quantity_uniform": {
+        "n": 138,
+        "mean": 0.025465420436336896,
+        "median": 0.02372753328692573,
+        "q1": 0.010402054398148133,
+        "q3": 0.03832769097222223,
+        "sd": 0.021311074466657896,
+        "se": 0.001814119131722855,
+        "ci": [
+          0.02187812464245044,
+          0.029052716230223354
+        ],
+        "t": 14.03734737759619,
+        "p": 2.690227299149179e-28,
+        "wilcoxon_p": 2.7620281100846938e-21,
+        "prob_gt_0": 0.8985507246376812,
+        "prob_gt_001": 0.7536231884057971,
+        "prob_gt_002": 0.6014492753623188,
+        "left": "loso",
+        "right": "loso_matched",
+        "n_fits": 2002
+      },
+      "composition_uniform": {
+        "n": 138,
+        "mean": 0.009296833752340689,
+        "median": 0.010658334939521542,
+        "q1": -0.0058400947450383345,
+        "q3": 0.023928846153846137,
+        "sd": 0.025913390692097124,
+        "se": 0.0022058943060750645,
+        "ci": [
+          0.004934829500488683,
+          0.013658838004192694
+        ],
+        "t": 4.214541796829103,
+        "p": 4.5153905284890616e-05,
+        "wilcoxon_p": 4.899457038794058e-05,
+        "prob_gt_0": 0.6521739130434783,
+        "prob_gt_001": 0.5144927536231884,
+        "prob_gt_002": 0.3115942028985507,
+        "left": "loso_matched",
+        "right": "forward_expanding",
+        "n_fits": 2002
+      }
+    },
+    "strict_future": {
+      "total": {
+        "n": 138,
+        "mean": 0.052936187150016877,
+        "median": 0.046550719246031734,
+        "q1": 0.024477156122010017,
+        "q3": 0.08026754299496902,
+        "sd": 0.045861532516357974,
+        "se": 0.0039039929065154432,
+        "ci": [
+          0.04521630972410318,
+          0.06065606457593057
+        ],
+        "t": 13.559498804844326,
+        "p": 4.306695730512343e-27,
+        "wilcoxon_p": 7.909581134344982e-21,
+        "prob_gt_0": 0.9130434782608695,
+        "prob_gt_001": 0.8478260869565217,
+        "prob_gt_002": 0.8043478260869565,
+        "left": "loso",
+        "right": "forward_expanding",
+        "n_fits": 1120
+      },
+      "quantity_uniform": {
+        "n": 138,
+        "mean": 0.04010765538128498,
+        "median": 0.03771324823691204,
+        "q1": 0.01686729166666666,
+        "q3": 0.056163799602099704,
+        "sd": 0.030977589015008154,
+        "se": 0.0026369874956186164,
+        "ci": [
+          0.03489319400102266,
+          0.04532211676154731
+        ],
+        "t": 15.209649438203366,
+        "p": 3.2344299751717756e-31,
+        "wilcoxon_p": 1.9684502685924972e-22,
+        "prob_gt_0": 0.9420289855072463,
+        "prob_gt_001": 0.8405797101449275,
+        "prob_gt_002": 0.7101449275362319,
+        "left": "loso",
+        "right": "loso_matched",
+        "n_fits": 1120
+      },
+      "composition_uniform": {
+        "n": 138,
+        "mean": 0.012828531768731893,
+        "median": 0.010736772486772458,
+        "q1": -0.011490184947967719,
+        "q3": 0.032991156012553896,
+        "sd": 0.04152361101595329,
+        "se": 0.0035347245058016154,
+        "ci": [
+          0.005838857204103205,
+          0.01981820633336058
+        ],
+        "t": 3.6292875859706073,
+        "p": 0.0004002684241734162,
+        "wilcoxon_p": 0.000691240352300571,
+        "prob_gt_0": 0.6231884057971014,
+        "prob_gt_001": 0.5289855072463768,
+        "prob_gt_002": 0.34782608695652173,
+        "left": "loso_matched",
+        "right": "forward_expanding",
+        "n_fits": 1120
+      },
+      "strict_future": {
+        "n": 138,
+        "mean": 0.016520058241131296,
+        "median": 0.012438036207603684,
+        "q1": -0.01071961686211283,
+        "q3": 0.04218247163384285,
+        "sd": 0.05487158727343046,
+        "se": 0.0046709797019606316,
+        "ci": [
+          0.007283517186487785,
+          0.025756599295774806
+        ],
+        "t": 3.5367437444005687,
+        "p": 0.00055332989460245,
+        "wilcoxon_p": 0.0005686084320795999,
+        "prob_gt_0": 0.5942028985507246,
+        "prob_gt_001": 0.5217391304347826,
+        "prob_gt_002": 0.427536231884058,
+        "left": "future_matched",
+        "right": "forward_expanding",
+        "n_fits": 1120
+      }
+    }
+  },
+  "matched_monte_carlo": {
+    "by_support": {
+      "conditional": {
+        "participants": 138,
+        "participant_targets": 1001,
+        "model_target_rows": 2002,
+        "draws": [
+          5
+        ],
+        "median_marginal_se": 0.01611237408394935,
+        "q95_marginal_se": 0.05187733588909736,
+        "max_marginal_se": 0.10801198049970605,
+        "triangle_se_bound_plugin": 0.018016956299323733
+      },
+      "strict_future": {
+        "participants": 138,
+        "participant_targets": 560,
+        "model_target_rows": 1120,
+        "draws": [
+          5
+        ],
+        "median_marginal_se": 0.020984814121408776,
+        "q95_marginal_se": 0.057812626160668644,
+        "max_marginal_se": 0.10801198049970605,
+        "triangle_se_bound_plugin": 0.022099355778247266
+      }
+    },
+    "marginal_se_formula": "stored_ddof0_SD/sqrt(D-1)",
+    "aggregation_weights": "Equal participants, then equal targets and decoders within participant",
+    "triangle_bound_formula": "SE(sum(a_j X_j)) <= sum(abs(a_j)*SE(X_j))",
+    "note": "The triangle expression allows arbitrary covariance, including shared donor draws across decoders and datasets. Marginal SEs estimated from five draws are plugged in; this is not an exact MCSE, an upper confidence limit, or evidence of reference invariance."
+  },
+  "matched_trial_count_discrepancies": [
+    {
+      "support": "conditional",
+      "dataset": "BNCI2014_004",
+      "model_target_rows": 54,
+      "unequal_trial_count_rows": 52,
+      "min_trial_count_difference": 0.0,
+      "max_trial_count_difference": 56.0
+    },
+    {
+      "support": "conditional",
+      "dataset": "Kumar2024",
+      "model_target_rows": 144,
+      "unequal_trial_count_rows": 142,
+      "min_trial_count_difference": -32.0,
+      "max_trial_count_difference": 0.0
+    },
+    {
+      "support": "conditional",
+      "dataset": "Ma2020",
+      "model_target_rows": 650,
+      "unequal_trial_count_rows": 0,
+      "min_trial_count_difference": 0.0,
+      "max_trial_count_difference": 0.0
+    },
+    {
+      "support": "conditional",
+      "dataset": "Stieger2021",
+      "model_target_rows": 948,
+      "unequal_trial_count_rows": 942,
+      "min_trial_count_difference": -158.60000000000002,
+      "max_trial_count_difference": 102.60000000000002
+    },
+    {
+      "support": "conditional",
+      "dataset": "Zhou2016",
+      "model_target_rows": 8,
+      "unequal_trial_count_rows": 2,
+      "min_trial_count_difference": 0.0,
+      "max_trial_count_difference": 6.0
+    },
+    {
+      "support": "conditional",
+      "dataset": "Zhou2020",
+      "model_target_rows": 198,
+      "unequal_trial_count_rows": 82,
+      "min_trial_count_difference": -26.0,
+      "max_trial_count_difference": 48.0
+    },
+    {
+      "support": "strict_future",
+      "dataset": "BNCI2014_004",
+      "model_target_rows": 36,
+      "unequal_trial_count_rows": 34,
+      "min_trial_count_difference": 0.0,
+      "max_trial_count_difference": 56.0
+    },
+    {
+      "support": "strict_future",
+      "dataset": "Kumar2024",
+      "model_target_rows": 72,
+      "unequal_trial_count_rows": 72,
+      "min_trial_count_difference": -32.0,
+      "max_trial_count_difference": -4.0
+    },
+    {
+      "support": "strict_future",
+      "dataset": "Ma2020",
+      "model_target_rows": 350,
+      "unequal_trial_count_rows": 0,
+      "min_trial_count_difference": 0.0,
+      "max_trial_count_difference": 0.0
+    },
+    {
+      "support": "strict_future",
+      "dataset": "Stieger2021",
+      "model_target_rows": 536,
+      "unequal_trial_count_rows": 532,
+      "min_trial_count_difference": -155.8,
+      "max_trial_count_difference": 102.60000000000002
+    },
+    {
+      "support": "strict_future",
+      "dataset": "Zhou2016",
+      "model_target_rows": 8,
+      "unequal_trial_count_rows": 2,
+      "min_trial_count_difference": 0.0,
+      "max_trial_count_difference": 6.0
+    },
+    {
+      "support": "strict_future",
+      "dataset": "Zhou2020",
+      "model_target_rows": 118,
+      "unequal_trial_count_rows": 54,
+      "min_trial_count_difference": -26.0,
+      "max_trial_count_difference": 36.0
+    }
+  ],
+  "drift_influence": {
+    "formula": "delta ~ drift_z + target_session + C(model) + C(dataset)",
+    "n": 2002,
+    "n_subjects": 138,
+    "residual_covariance": "independent working residuals; inference clustered by participant",
+    "drift_beta_clustered": -0.00014522758870773062,
+    "drift_ci_clustered": [
+      -0.005009903826853429,
+      0.004719448649437968
+    ],
+    "drift_p_clustered": 0.9530116599324894,
+    "cooks_cutoff": 0.001998001998001998,
+    "n_above_cooks_cutoff": 91,
+    "trimmed_drift_beta": 0.0009241689564374492,
+    "trimmed_drift_ci": [
+      -0.0026398501260733553,
+      0.004488188038948253
+    ],
+    "trimmed_drift_p": 0.6112927523298227
+  },
+  "ma2020_time_unit": {
+    "day_auc_conditional": {
+      "n": 25,
+      "mean": 0.038931999999999994,
+      "median": 0.032249999999999945,
+      "q1": 0.00979999999999992,
+      "q3": 0.05634999999999998,
+      "sd": 0.04677992108444248,
+      "se": 0.009355984216888496,
+      "ci": [
+        0.01962219763214936,
+        0.05824180236785063
+      ],
+      "t": 4.161187011167014,
+      "p": 0.0003503575178320756,
+      "wilcoxon_p": 0.000102996826171875,
+      "prob_gt_0": 0.8,
+      "prob_gt_001": 0.72,
+      "prob_gt_002": 0.64,
+      "metric": "auc",
+      "estimand": "conditional",
+      "time_unit": "day"
+    },
+    "day_auc_all_origin": {
+      "n": 25,
+      "mean": 0.019465999999999997,
+      "median": 0.016124999999999973,
+      "q1": 0.00489999999999996,
+      "q3": 0.02817499999999999,
+      "sd": 0.02338996054222124,
+      "se": 0.004677992108444248,
+      "ci": [
+        0.00981109881607468,
+        0.029120901183925314
+      ],
+      "t": 4.161187011167014,
+      "p": 0.0003503575178320756,
+      "wilcoxon_p": 0.000102996826171875,
+      "prob_gt_0": 0.8,
+      "prob_gt_001": 0.64,
+      "prob_gt_002": 0.4,
+      "metric": "auc",
+      "estimand": "all_origin",
+      "time_unit": "day"
+    },
+    "day_balanced_accuracy_conditional": {
+      "n": 25,
+      "mean": 0.033400000000000006,
+      "median": 0.03750000000000003,
+      "q1": 0.012500000000000067,
+      "q3": 0.05750000000000011,
+      "sd": 0.033826148662437674,
+      "se": 0.006765229732487535,
+      "ci": [
+        0.01943725208603586,
+        0.04736274791396415
+      ],
+      "t": 4.93700898871309,
+      "p": 4.876718023677466e-05,
+      "wilcoxon_p": 0.00036340261697055486,
+      "prob_gt_0": 0.8,
+      "prob_gt_001": 0.76,
+      "prob_gt_002": 0.68,
+      "metric": "balanced_accuracy",
+      "estimand": "conditional",
+      "time_unit": "day"
+    },
+    "day_balanced_accuracy_all_origin": {
+      "n": 25,
+      "mean": 0.016700000000000003,
+      "median": 0.018750000000000017,
+      "q1": 0.006250000000000033,
+      "q3": 0.028750000000000053,
+      "sd": 0.016913074331218837,
+      "se": 0.0033826148662437676,
+      "ci": [
+        0.00971862604301793,
+        0.023681373956982076
+      ],
+      "t": 4.93700898871309,
+      "p": 4.876718023677466e-05,
+      "wilcoxon_p": 0.00036340261697055486,
+      "prob_gt_0": 0.8,
+      "prob_gt_001": 0.68,
+      "prob_gt_002": 0.44,
+      "metric": "balanced_accuracy",
+      "estimand": "all_origin",
+      "time_unit": "day"
+    },
+    "block_auc_conditional": {
+      "n": 25,
+      "mean": 0.03578846153846152,
+      "median": 0.039999999999999966,
+      "q1": 0.02355769230769231,
+      "q3": 0.05355769230769226,
+      "sd": 0.028388368024642834,
+      "se": 0.005677673604928567,
+      "ci": [
+        0.02407031915185607,
+        0.04750660392506697
+      ],
+      "t": 6.3033671938089135,
+      "p": 1.6237822177287736e-06,
+      "wilcoxon_p": 1.233816146850586e-05,
+      "prob_gt_0": 0.88,
+      "prob_gt_001": 0.84,
+      "prob_gt_002": 0.8,
+      "metric": "auc",
+      "estimand": "conditional",
+      "time_unit": "block"
+    },
+    "block_auc_all_origin": {
+      "n": 25,
+      "mean": 0.03323214285714284,
+      "median": 0.03714285714285711,
+      "q1": 0.021875000000000002,
+      "q3": 0.049732142857142815,
+      "sd": 0.026360627451454056,
+      "se": 0.005272125490290811,
+      "ci": [
+        0.022351010641009212,
+        0.044113275073276476
+      ],
+      "t": 6.303367193808915,
+      "p": 1.623782217728765e-06,
+      "wilcoxon_p": 1.233816146850586e-05,
+      "prob_gt_0": 0.88,
+      "prob_gt_001": 0.84,
+      "prob_gt_002": 0.8,
+      "metric": "auc",
+      "estimand": "all_origin",
+      "time_unit": "block"
+    }
+  },
+  "structural_zero_rows": 276
+}

@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this software, cite this repository."
+type: software
+title: "Chronology-aware cross-session evaluation for motor-imagery EEG"
+authors:
+  - family-names: "Shen"
+    given-names: "Yiming"
+repository-code: "https://github.com/Yiming-S/loso-vs-prospective-bci"

@@ -1,0 +1,13 @@
+support,dataset,model_target_rows,unequal_trial_count_rows,min_trial_count_difference,max_trial_count_difference
+conditional,BNCI2014_004,54,52,0.0,56.0
+conditional,Kumar2024,144,142,-32.0,0.0
+conditional,Ma2020,650,0,0.0,0.0
+conditional,Stieger2021,948,942,-158.60000000000002,102.60000000000002
+conditional,Zhou2016,8,2,0.0,6.0
+conditional,Zhou2020,198,82,-26.0,48.0
+strict_future,BNCI2014_004,36,34,0.0,56.0
+strict_future,Kumar2024,72,72,-32.0,-4.0
+strict_future,Ma2020,350,0,0.0,0.0
+strict_future,Stieger2021,536,532,-155.8,102.60000000000002
+strict_future,Zhou2016,8,2,0.0,6.0
+strict_future,Zhou2020,118,54,-26.0,36.0

@@ -1,0 +1,677 @@
+\documentclass{ieeeaccess}
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage{placeins}
+\usepackage{balance}
+\usepackage{needspace}
+
+\graphicspath{{../results/figures/}}
+% Figures are authored as editable SVG files. The vector-PDF mirrors used by
+% pdfLaTeX are generated from the same fixed-size canvases.
+\newcommand{\widefigwidth}{0.90\textwidth}
+\newcommand{\settableformat}{%
+  \footnotesize
+  \setlength{\tabcolsep}{4pt}%
+  \renewcommand{\arraystretch}{1.08}%
+}
+\input{revision_results.tex}
+
+\newcommand{\AUC}{\mathrm{AUC}}
+\newcommand{\LOSO}{\mathrm{LOSO}}
+\newcommand{\EXP}{\mathrm{EXP}}
+
+\begin{document}
+
+\history{}
+\doi{}
+\vol{14}
+\year{2026}
+
+\title{Evaluation-Target Mismatch in Longitudinal Motor-Imagery BCI:\
+Leave-One-Session-Out and Expanding-Window Validation}
+
+\author{\uppercase{Yiming Shen}\authorrefmark{1}}
+\address[1]{Department of Mathematics, University of Massachusetts Boston,
+Boston, MA 02125 USA (e-mail: yiming.shen001@umb.edu)}
+\markboth
+{Shen: Evaluation-Target Mismatch in Longitudinal Motor-Imagery BCI}
+{Shen: Evaluation-Target Mismatch in Longitudinal Motor-Imagery BCI}
+\corresp{Corresponding author: Yiming Shen (e-mail: yiming.shen001@umb.edu).}
+
+\begin{abstract}
+Cross-session electroencephalography studies often use leave-one-session-out
+(LOSO) evaluation, which trains on every recorded session except the target.
+For an early target, this training set contains sessions recorded later in the
+participant's trajectory. LOSO therefore measures retrospective compatibility
+with a completed trajectory, whereas a prospective update can use only the
+labeled history available at the target time. We quantified the resulting
+evaluation-target mismatch by pairing LOSO with expanding-window validation at
+identical target sessions in six longitudinal motor-imagery datasets. The audit
+covered 138 participants and two established decoder families: common spatial
+patterns with linear discriminant analysis and tangent-space features with
+logistic regression. Across all prospective origins, LOSO reported an average
+area under the receiver operating characteristic curve (AUC) that was 0.030 higher.
+The mean difference was positive under each aggregation
+rule and for both decoders, with substantial variation across recording designs.
+The higher-scoring decoder differed between protocols for some participants,
+primarily where the two decoders had similar scores. A donor-session-count-matched
+reference partitioned the protocol difference into two descriptive contrasts.
+Regrouping within-day blocks into recording days preserved a positive conditional
+difference. Longitudinal BCI evaluation should define the
+deployment decision and its available information before choosing the split.
+\end{abstract}
+
+\begin{keywords}
+Brain--computer interfaces, cross-session decoding, electroencephalography,
+longitudinal evaluation, motor imagery, prospective validation.
+\end{keywords}
+
+\titlepgskip=-21pt
+\maketitle
+\raggedbottom
+
+\section{Introduction}
+\label{sec:introduction}
+\PARstart{L}{ongitudinal} brain--computer interfaces (BCIs) are evaluated at a
+sequence of calibration decisions. Before a new session, a decoder can use
+previously labeled recordings; after the session, newly acquired labels may
+support another update. An evaluation protocol represents the intended use only
+when its training information matches what is available at that decision point.
+
+Leave-one-session-out (LOSO) validation withholds one target session and trains
+on every other recorded session. It is a natural measure of how well a session
+fits the participant's completed recording trajectory and is available in
+reproducible BCI benchmarking frameworks \cite{jayaram2018moabb,chevallier2024benchmark}.
+At an early target, however, LOSO also uses later sessions. An expanding-window
+design trains on sessions observed before the target. The two protocols test the
+same trials but estimate different operational quantities.
+
+This distinction matters because cross-session research increasingly targets
+adaptation, transfer, and continual updating. A protocol that mixes later
+recordings into an earlier training set can change both the reported performance
+level and the apparent ordering of candidate decoders. Quantifying this difference
+requires paired evaluation at identical test sessions, explicit averaging weights,
+and a separation between the observed trajectory and the information available
+before each target.
+
+Building on rolling-origin evaluation and pipeline-level assessment, this study
+quantifies the difference between retrospective and chronological training
+information sets at identical BCI test sessions. First, it measures the paired
+protocol difference across six datasets, 138 participants, and two decoder
+families. Second, it characterizes variation across participants and recording
+designs, observed decoder rankings, and a donor-session-count-matched reference.
+Third, it provides a reporting specification linking each evaluation to its
+prediction event, available information, temporal unit, and averaging population.
+
+\section{Related Work}
+\label{sec:related}
+Open BCI benchmarks standardize datasets, pipelines, and evaluation interfaces,
+making cross-study comparison increasingly reproducible
+\cite{jayaram2018moabb,chevallier2024benchmark}. Protocol validity remains a
+separate requirement. Borra \emph{et al.} combine pipeline-wide hyperparameter
+optimization with repeated random initialization in a within-participant LOSO protocol
+\cite{borra2025trustworthy}. Brookshire \emph{et al.} examine leakage in
+translational EEG studies \cite{brookshire2024leakage}. The present audit addresses
+the time at which donor recordings become available while fixing decoder
+configurations across protocols.
+
+Cross-session motor-imagery methods address nonstationarity through session
+selection, domain adaptation, and continual updating. Recent examples include
+relevant-session transfer \cite{sung2024sessiontransfer}, synchronized
+self-training \cite{chen2025synchronized}, nonstationary attention with
+critic-free adaptation \cite{guo2025crosssession}, and longitudinal fine-tuning
+\cite{wimpff2025continual}. These methods differ in architecture and adaptation
+mechanism, but all require an explicit definition of which sessions and labels
+exist when a prediction is evaluated.
+
+Temporal prediction research supplies that definition. Rolling-origin evaluation
+places the model at the historical point from which a prediction would have been
+made \cite{tashman2000outofsample}; leave-future-out validation and assessment
+under temporal distribution shift apply the same principle
+\cite{burkner2020leavefuture,han2024temporal}. The present study transfers this
+principle within longitudinal BCI evaluation and measures the consequence of replacing
+a completed-trajectory training set with the history actually available at each
+target.
+
+\section{Evaluation Targets and Estimands}
+\label{sec:estimands}
+\subsection{One Target, Two Information Sets}
+For participant $i$ with ordered sessions $0,\ldots,T_i-1$, the donor sets at
+target session $t$ are
+\begin{align}
+S_{\LOSO}(t) &= \{0,\ldots,T_i-1\}\setminus\{t\},\\
+S_{\EXP}(t) &= \{0,\ldots,t-1\}.
+\end{align}
+Both protocols reserve every trial from session $t$ for testing. Performance is
+measured by the area under the receiver operating characteristic curve (AUC).
+For decoder $m$, the paired contrast is
+\begin{equation}
+\Delta_{i,t,m}=\AUC^{\LOSO}_{i,t,m}-\AUC^{\EXP}_{i,t,m}.
+\end{equation}
+Evaluation begins at $t=1$, when at least one prior session exists. At the final
+target, the two donor sets coincide, so $\Delta_{i,T_i-1,m}=0$. Figure~\ref{fig:logic}
+shows the information-set comparison and the two analysis populations.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\widefigwidth]{fig0_protocol_logic.pdf}
+\caption{Information sets for the paired evaluation. (a) At the same early target,
+LOSO trains on prior sessions and a later session, whereas the expanding window
+uses only the history already available. The test trials and decoder are identical.
+(b) The primary estimand averages all prospective origins, including the final
+origin where the donor sets coincide; the supporting estimand conditions on the
+availability of a later donor.}
+\label{fig:logic}
+\end{figure*}
+
+\subsection{Primary and Supporting Estimands}
+Let $N=138$ and let $m$ index the two fixed decoder configurations, CSP+LDA and
+TS+LR. The primary estimand covers every prospective origin in the observed trajectories:
+\begin{equation}
+\theta_{\mathrm{all}}=\frac{1}{N}\sum_i
+\frac{1}{2(T_i-1)}\sum_m\sum_{t=1}^{T_i-1}\Delta_{i,t,m}.
+\end{equation}
+The supporting conditional estimand describes targets at which LOSO has at least
+one later donor:
+\begin{equation}
+\theta_{\mathrm{future}>0}=\frac{1}{N}\sum_i
+\frac{1}{2(T_i-2)}\sum_m\sum_{t=1}^{T_i-2}\Delta_{i,t,m}.
+\end{equation}
+Both estimands first average targets and the two decoders within participant and
+then give participants equal weight. Target-weighted summaries instead give each
+participant--target pair equal weight after averaging decoders. Dataset-weighted
+summaries average the six dataset means equally.
+Writing $\bar\Delta_i$ for the within-participant average over targets and both
+decoders, the final structural zero gives the identity
+\begin{equation}
+\bar\Delta_{i,\mathrm{all}}
+=\frac{T_i-2}{T_i-1}\bar\Delta_{i,\mathrm{future}>0}.
+\label{eq:zero-scaling}
+\end{equation}
+Thus, all-origin means summarize the complete observed sequence of update
+decisions, while conditional means summarize decisions with at least one later
+donor. The scaling factor varies with trajectory length.
+
+\section{Methods}
+\label{sec:methods}
+\subsection{Datasets and Time Units}
+The analysis uses the fixed collection of six datasets in Table~\ref{tab:data}.
+Each provides binary motor-imagery labels, at least three source-defined ordered
+units per participant, chronological unit identifiers, and complete evaluation
+coverage for both classical decoders. The inclusion manifest records the
+participants and targets represented in the result files. This curated collection
+defines the empirical scope of the audit, comprising 138 participants.
+
+Zhou2016 and Zhou2020 are distinct datasets \cite{zhou2016trial,zhou2021relative}.
+Ma2020 records right-hand and right-elbow imagery \cite{ma2020samejoint}; the
+remaining datasets use left- and right-hand imagery. The source-defined unit is a
+session or recording day except in the primary Ma2020 analysis, which uses the 15
+released block identifiers. A sensitivity analysis regroups those blocks into
+their three recording days. Session-index lag is interpreted within dataset
+because a one-unit step does not represent a common elapsed time across studies.
+
+\begin{table*}[!t]
+\centering
+\settableformat
+\caption{Longitudinal motor-imagery datasets in the audit. Channel counts refer to
+EEG channels retained by the audited loader.}
+\label{tab:data}
+\begin{tabularx}{0.92\textwidth}{@{}>{\raggedright\arraybackslash}Xr>{\raggedright\arraybackslash}Xrl@{}}
+\toprule
+Dataset & Participants & Ordered units & EEG channels & Source\\
+\midrule
+BNCI2014\_004 & 9 & 5 sessions & 3 bipolar & \cite{tangermann2012review}\\
+Zhou2016 & 4 & 3 sessions & 14 & \cite{zhou2016trial}\\
+Zhou2020 & 20 & 6 or 7 sessions & 41 or 26 & \cite{zhou2021relative}\\
+Kumar2024 & 18 & 6 sessions & 22 & \cite{kumar2024transfer}\\
+Ma2020 & 25 & 15 blocks in 3 days & 62 & \cite{ma2020samejoint}\\
+Stieger2021 & 62 & 7 or 11 sessions & 60 retained & \cite{stieger2021continuous}\\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+Every recording was band-pass filtered from 8 to 35 Hz, resampled to 128 Hz, and
+epoched over $[0,3)$ s relative to the task cue, giving 384 samples per trial.
+Ma2020 CNT files were loaded after removing horizontal and vertical
+electrooculography channels, the mastoid reference, and optional electromyography
+channels, leaving 62 scalp EEG channels.
+Preprocessing did not use participant-wide or cross-session normalization, and
+its parameters did not depend on target-session labels or performance.
+
+\subsection{Decoders and Information Isolation}
+The paired audit used two established decoder families with different feature
+geometries and complete coverage across all six datasets. Common spatial patterns
+with linear discriminant analysis (CSP+LDA) represent a supervised spatial-filter
+pipeline; tangent-space features with logistic regression (TS+LR) represent
+covariance geometry in a tangent space. Their deterministic, fixed configurations keep the comparison
+centered on evaluation protocol rather than decoder search.
+
+CSP+LDA used $\min(8,p)$ common spatial pattern (CSP) components for $p$ channels,
+reduced to the next lower even number when required. CSP used Ledoit--Wolf
+regularization, and linear discriminant analysis used the \texttt{lsqr} solver
+with automatic shrinkage \cite{blankertz2008csp}. TS+LR estimated a Ledoit--Wolf
+covariance for each trial, learned the affine-invariant tangent-space reference
+from the donor covariances, and fitted $L_2$ logistic regression with $C=1$ and
+the \texttt{lbfgs} solver \cite{barachant2012riemann}. All hyperparameters were
+held fixed across protocols.
+
+Each participant, target, protocol, and decoder received a fresh fit. CSP filters,
+LDA parameters, the tangent-space reference, and logistic-regression parameters
+were estimated only from donor trials. The target session contributed final
+scores only. The inclusion audit verified complete participant--target fits,
+unique result keys, and AUC values in the valid range. AUC was the primary endpoint;
+the Ma2020 day-level sensitivity also reported balanced accuracy.
+
+\subsection{Statistical Analysis}
+The primary analysis used participant-level all-origin means, two-sided one-sample
+$t$ intervals, and Wilcoxon signed-rank sensitivity tests. The same procedures
+were applied to the conditional estimand. Target-weighted intervals used 5,000
+participant-cluster bootstrap resamples. Dataset means were summarized with
+participant-level intervals and equal-dataset weighting.
+
+A random-effects synthesis used each dataset's participant-level mean and sampling
+variance. Between-dataset variance was estimated by restricted maximum likelihood.
+The summary interval used a $t$ reference across the six datasets, and the
+prediction interval incorporated mean-estimation uncertainty and between-dataset
+variance. Heterogeneity was summarized by $I^2$. Exact interval formulas and a
+residual-scale sensitivity analysis are given in Appendix~\ref{app:uncertainty}.
+The intervals describe estimation uncertainty without multiplicity adjustment;
+secondary contrasts and sensitivity checks are interpreted descriptively.
+
+Protocol sensitivity was evaluated from the participant distribution of $\Delta$
+and the higher-scoring decoder by participant mean AUC under each protocol.
+We recorded the direction of each observed ranking change and its persistence
+when both within-protocol decoder differences exceeded 0.005, 0.01, or 0.02 AUC.
+These thresholds describe proximity to a tie. Two additional AUC thresholds,
+0.70 and 0.75, were retained as illustrative sensitivity checks in the appendix;
+they were not treated as clinical cutoffs.
+
+\subsection{Common-Support and Robustness Analyses}
+A uniform donor-session-count-matched reference sampled $t$ sessions from the
+LOSO-eligible donor pool and averaged five draws from a fixed random seed.
+The main decomposition uses all conditional targets. A second decomposition uses
+strict-future common support, $T_i-1-t\geq t$, to align with an additional arm
+trained exclusively on later sessions. On each support, the contrast is
+partitioned as
+\begin{align}
+\AUC_{\LOSO}-\AUC_{\EXP}={}&
+(\AUC_{\LOSO}-\AUC_{\mathrm{matched}})\nonumber\\
+&+(\AUC_{\mathrm{matched}}-\AUC_{\EXP}).
+\end{align}
+The first term compares the full donor pool with the matched reference; the second
+compares that reference with the $t$ prior sessions. Matching session count leaves
+trial count and session characteristics dependent on the sampled donors. The
+components form an additive description under this specific reference and support.
+Participant intervals condition on the realized draws. Monte Carlo diagnostics
+use support-specific weights and a covariance-free bound based on estimated
+marginal variances (Appendix~\ref{app:uncertainty}).
+
+Two additional operational policies trained on the immediately previous session
+or the first session only. The target-position analysis related the conditional
+contrast to the number of later sessions available to LOSO within each dataset.
+An adjacent-session drift proxy used the affine-invariant Riemannian distance
+between unconditional mean trial covariance matrices at $t-1$ and $t$, standardized
+within dataset. Its target-level regression adjusted for target index, decoder,
+and dataset, with participant-clustered standard errors. Finally, the Ma2020
+day-level analysis concatenated blocks 1--5, 6--10, and 11--15, retained all trials,
+and refitted both decoders.
+
+\section{Results}
+\label{sec:results}
+\subsection{LOSO Reports a Higher Performance Level}
+Across all prospective origins, mean AUC was 0.768 (95\% CI [0.747, 0.789]) under
+LOSO and 0.738 (95\% CI [0.718, 0.759]) under expanding-window validation. Their
+paired participant-weighted difference was \AllGapMean{} AUC (95\% CI
+[\AllGapLo{}, \AllGapHi{}]). Target weighting produced a similar estimate. When
+the final convergence point was removed, the conditional difference was
+\CondGapMean{} AUC (95\% CI [\CondGapLo{}, \CondGapHi{}]).
+Figure~\ref{fig:estimands} shows the corresponding participant distributions, and
+Table~\ref{tab:estimands} reports the aggregation analyses.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\widefigwidth]{fig2_estimands_distribution.pdf}
+\caption{Primary and supporting estimates. (a) Participant- and target-weighted
+LOSO minus expanding-window AUC. (b) Participant-level distributions. The vertical
+reference lines mark zero, 0.01, and 0.02 AUC.}
+\label{fig:estimands}
+\end{figure*}
+
+\input{table_estimands.tex}
+
+The two decoder families showed the same protocol ordering. The all-origin mean
+difference was \AllCSPGapMean{} AUC for CSP+LDA and \AllTSGapMean{} for TS+LR.
+Under the primary estimand, LOSO produced the larger participant mean for
+\AllPositive\% of participants, and the difference exceeded 0.02 AUC for
+\AllGtTwo\%. The higher-scoring decoder differed between protocols for
+\AllRankChangeN{} of 138 participants (\AllRankChangePct\%). Of these,
+\AllFlipCSPtoTSN{} changed from CSP+LDA under LOSO to TS+LR under expanding-window
+evaluation, and \AllFlipTStoCSPN{} changed in the opposite direction.
+Only \AllFlipMarginOneN{} participant had a ranking change with decoder
+differences exceeding 0.01 AUC under both protocols. The corresponding conditional
+count was \CondFlipMarginOneN{} of \CondRankChangeN{} changes.
+TS+LR had the higher dataset-average AUC in all six datasets under both protocols
+and both estimands. Figure~\ref{fig:margins} distinguishes observed ranking changes
+from near ties.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\widefigwidth]{fig6_decoder_margins.pdf}
+\caption{Participant-level decoder margins under the two protocols. Each point
+is one participant; positive margins favor TS+LR over CSP+LDA. Opposite-sign
+quadrants indicate a change in the observed higher-scoring decoder. Shaded bands
+mark absolute margins at or below 0.01 AUC; the threshold is a descriptive sensitivity check.}
+\label{fig:margins}
+\end{figure*}
+
+\subsection{The Magnitude Varies Across Recording Designs}
+Equal weighting of the six datasets gave an all-origin mean of \AllDatasetMean{}
+AUC. The random-effects estimate was \AllMetaMean{} (95\% CI [\AllMetaLo{},
+\AllMetaHi{}]), with $I^2=\AllMetaI\%$ and a prediction interval of
+[\AllMetaPredLo{}, \AllMetaPredHi{}]. Thus, the average protocol separation was
+positive across the observed designs. The prediction interval crosses zero,
+representing uncertainty in both direction and magnitude for another recording
+design.
+
+Figure~\ref{fig:forest} displays the all-origin estimates by dataset and decoder.
+The dataset means were positive in all six datasets. Uncertainty was widest for
+the cohorts with four and nine participants.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\widefigwidth]{fig1_gap_forest.pdf}
+\caption{All-origin LOSO minus expanding-window AUC by dataset and decoder. Points
+are dataset means of participant-level contrasts, and bars are 95\% confidence
+intervals across participants.}
+\label{fig:forest}
+\end{figure*}
+
+\subsection{Decomposition Under a Uniform Donor-Session Reference}
+On all 1,001 conditional participant--target pairs, the total protocol difference
+was \UniformTotalMean{} AUC. The full-pool minus matched-reference component was
+\UniformCountMean{}, and the matched-reference minus prior-history component was
+\UniformCompositionMean{}. Both comparisons use the same targets and participant
+weights as the conditional estimand. The reference matches the number of donor
+sessions; variation in their trial counts remains within the sampled composition.
+
+Restricting all arms to the 560 early targets with sufficient strictly future
+donors gave a total difference of \StrictTotalMean{} AUC, partitioned into
+\StrictCountMean{} and \StrictCompositionMean{}. Training exclusively on the
+matched number of future sessions instead of prior sessions gave a difference of
+\StrictFutureMean{}. Table~\ref{tab:common-support} reports each support separately.
+The covariance-free plug-in standard-error bounds for the sampled reference were
+\CondMatchedTriangleSE{} and \StrictMatchedTriangleSE{} AUC on these two supports.
+They use estimated marginal variances; the joint Monte Carlo standard error is
+unidentified from the retained summaries. Appendix~\ref{app:uncertainty} specifies
+the diagnostic separately from participant uncertainty.
+
+\input{table_common_support.tex}
+
+\subsection{Temporal-Unit and Drift Analyses}
+For Ma2020, the all-origin difference was \MaBlockAll{} AUC when the released
+blocks were treated as ordered units and \MaDayAll{} after the same trials were
+grouped into three recording days. The conditional differences were
+\MaBlockCond{} and \MaDayCond{} AUC, respectively; the day-level difference was
+also positive for balanced accuracy. Equation~\eqref{eq:zero-scaling} gives an
+all-origin scaling factor of $13/14$ for blocks and $1/2$ for days. Thus, the
+all-origin comparison combines a change in the temporal unit with a change in
+the weight of the final structural zero. The conditional comparison retains
+a positive separation under both time units.
+Table~\ref{tab:sensitivity} also reports the immediately-previous-session and
+first-session policy contrasts.
+
+The target-position curves differed by dataset and were largest at early positions
+in several longer trajectories. The adjusted coefficient for the adjacent
+unconditional covariance-distance proxy was near zero. These analyses are shown
+with their support and influence checks in Appendix~\ref{app:robust}.
+
+\section{Discussion}
+\label{sec:discussion}
+\subsection{The Split Defines the Evaluation Target}
+The main result quantifies how the training information set changes the measured
+performance at an identical target. LOSO measures decoding after the completed
+participant trajectory is available.
+Expanding-window validation measures decoding from the labeled history available
+before each target. The same participant, target trials, preprocessing, and decoder
+were paired throughout; the designed difference was the training information set.
+
+The primary all-origin estimate answers the longitudinal decision-sequence question
+over the recorded observation period. The conditional estimate summarizes targets
+where LOSO has later donors. Equation~\eqref{eq:zero-scaling} connects these
+quantities and shows how the observed endpoint and trajectory length affect
+all-origin averages. Reporting both preserves the distinction between the full
+decision sequence and the subset with different training information.
+
+\subsection{Consequences for Benchmarking and Adaptation}
+The protocol changed the pooled performance level and the observed higher-scoring
+decoder for a subset of participants. Most all-origin ranking changes involved
+decoder scores within 0.01 AUC under at least one protocol. These results describe
+the sensitivity of observed rankings to the split; a prospective selection policy
+would additionally define how a decoder is chosen from available history and
+evaluate that choice on subsequent sessions. Reporting the decoder margin alongside
+the winner count separates near ties from larger ranking changes.
+
+Under the uniform donor-session reference, the full-pool versus matched-reference
+component was larger than the matched-reference versus prior-history component.
+The latter holds session count fixed while changing donor identity, trial count,
+and session characteristics. This reference-dependent description identifies which
+comparisons differ in score. Session-selection and adaptation studies can use the
+same construction to state precisely which donor pool each reported score represents.
+
+Participant- and target-weighted summaries were closely aligned, whereas the
+random-effects analysis showed substantial cross-dataset heterogeneity. The result
+shows a positive mean in each of the six observed datasets and a design-specific
+magnitude. The random-effects prediction interval includes both positive and
+negative values. Dataset-level effects and the prediction interval therefore
+remain part of the interpretation of the pooled estimate.
+
+\subsection{Reporting Procedure and Empirical Scope}
+A longitudinal evaluation can be specified by the five reporting fields in
+Table~\ref{tab:reporting}. A completed-trajectory question maps to LOSO;
+chronological offline retraining maps to an expanding window. When both questions
+matter, both estimates can be reported and named by their information sets.
+
+\begin{table*}[!t]
+\centering
+\settableformat
+\caption{Reporting specification for longitudinal decoding evaluation, with this
+audit as a worked example.}
+\label{tab:reporting}
+\begin{tabularx}{0.94\textwidth}{@{}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}X@{}}
+\toprule
+Reporting field & Specification in this audit\\
+\midrule
+Prediction and update event & A fresh decoder fit before each target session.\\
+Available recordings and labels & Expanding window: all fully labeled prior sessions.
+LOSO: all fully labeled sessions other than the target.\\
+Target contributions to fitting & No target contributions to learned parameters;
+fixed preprocessing followed by scoring on the target trials.\\
+Temporal unit and endpoint & Source-defined session or block, through the final
+recorded unit; Ma2020 additionally regrouped by recording day.\\
+Averaging population & Targets and two decoders averaged within participant, then
+participants weighted equally. The all-origin average includes the final structural
+zero; conditional, target-weighted, and dataset-weighted summaries are identified separately.\\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+The empirical estimates describe binary motor imagery, two fixed classical decoder
+configurations, and the six recording designs in Table~\ref{tab:data}. The evaluated
+update policy refits from fully labeled prior sessions and measures discrimination
+by AUC on fixed recorded trajectories. Neural decoders, multiclass outcomes,
+delayed labels, and closed-loop adaptation define additional empirical settings.
+Feedback and user learning, as studied in closed-loop BCI
+\cite{wang2026jointlearning}, add interactions between the decoder and the recorded
+trajectory. Their evaluation requires specifying the corresponding update events
+and information availability. Alternative donor-sampling references and outcome
+metrics likewise define additional comparisons.
+
+\section{Conclusion}
+LOSO and expanding-window validation estimate different longitudinal BCI targets.
+Across six motor-imagery datasets, LOSO reported an average all-origin AUC 0.030
+higher, with variation across recording designs. Observed participant-level decoder
+rankings changed mainly where the scores were close. A uniform donor-session-count
+reference provided an additive description of the conditional difference on
+explicit support. Longitudinal benchmarks should define the evaluation decision,
+match its training information, and report its temporal unit and averaging weights.
+
+\section*{Data Availability}
+This study is a secondary analysis of the datasets cited in Table~\ref{tab:data}.
+Access conditions and raw-data licenses are governed by the original repositories
+and dataset publications. The analysis uses no newly collected participant data.
+
+\section*{Code Availability}
+The accompanying review supplement provides the manuscript snapshot, analysis code,
+version-pinned result-analysis dependencies, dataset registry, inclusion and support
+manifests, result-level CSV files, seeds, historical Stieger reuse provenance,
+SVG figure sources, matched vector-PDF figures, and LaTeX source. Its result-only
+workflow regenerates the analyses and figures without raw EEG. The submitted-result
+audit checks result coverage, duplicate keys, score ranges, and final-origin
+structural zeros. Raw-cache checks, including epoch length and retained channels,
+are a separate workflow requiring the original recordings or local caches.
+
+\section*{Ethics Statement}
+The analysis uses previously released, de-identified datasets and collects no new
+human-participant data. Ethical approvals and consent procedures are reported in the
+original dataset publications.
+
+\section*{Author Contributions}
+Yiming Shen: conceptualization, methodology, software, validation, formal analysis,
+data curation, visualization, writing---original draft, and writing---review and
+editing.
+
+\section*{Funding and Acknowledgment}
+This research received no external funding. OpenAI Codex assisted with structural
+and language editing throughout the manuscript,
+analysis-code revision for Sections IV--V and the appendices, figure generation,
+and LaTeX formatting. The author is responsible for the scientific content,
+numerical results, citations, and final manuscript.
+
+\appendices
+\section{Robustness and Interpretation Checks}
+\label{app:robust}
+
+\subsection{Participant-Level Ranking and Threshold Sensitivity}
+The primary participant-level median was \AllMedian{} AUC (IQR
+[\AllIQRLo{}, \AllIQRHi{}]). Table~\ref{tab:practical} reports the prevalence of
+positive differences and differences exceeding the stated thresholds.
+Table~\ref{tab:decisions} reports observed ranking changes, margin sensitivity,
+and threshold crossings in both directions.
+
+\input{table_practical_impact.tex}
+\input{table_decision_impact.tex}
+
+\subsection{Target Position and Later-Session Availability}
+Figure~\ref{fig:history} displays the conditional difference by the number of later
+sessions available only to LOSO. Because this count equals $T_i-1-t$, each curve
+jointly reflects target position, accumulated history, and trajectory length.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\widefigwidth]{fig3_history_by_dataset.pdf}
+\caption{Dataset-specific association between the protocol difference and the
+number of later sessions available to LOSO. Each point averages participants and
+both decoders at a common within-dataset index; bars are 95\% participant-level
+confidence intervals.}
+\label{fig:history}
+\end{figure*}
+
+\subsection{Ma2020 Temporal Unit}
+Treating Ma2020's 15 blocks as ordered units gave conditional and all-origin
+differences of \MaBlockCond{} and \MaBlockAll{} AUC. Grouping the same trials into
+three recording days gave \MaDayCond{} and \MaDayAll{}, respectively
+(Figure~\ref{fig:ma}). On the day-level conditional support, the balanced-accuracy
+difference was \MaDayBA{} (95\% CI [\MaDayBALo{}, \MaDayBAHi{}]).
+
+\input{table_sensitivity.tex}
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\widefigwidth]{fig5_ma_time_unit.pdf}
+\caption{Ma2020 sensitivity to the temporal unit. The block analysis uses 15
+ordered blocks; the day analysis concatenates five consecutive blocks within each
+of three recording days. Bars are 95\% participant-level confidence intervals.}
+\label{fig:ma}
+\end{figure*}
+
+\subsection{Adjacent Covariance-Distance Proxy}
+The participant-clustered coefficient for standardized adjacent unconditional
+covariance distance was \DriftRobustBeta{} AUC (95\% CI [\DriftRobustLo{},
+\DriftRobustHi{}], $p=\DriftRobustP$). Ninety-one of 2,002 target--decoder
+observations exceeded the Cook's-distance threshold; removing them produced a
+similarly near-zero association.
+
+\section{Observed Support and Alternative Policies}
+\label{app:donor}
+The strict-future arm requires $t\leq(T_i-1)/2$ and therefore represents early
+targets. Table~\ref{tab:support} reports its participant--target support and dataset
+composition. The uniform reference is defined on all conditional targets; the
+future-only reference additionally requires this early-target support.
+
+\input{table_support.tex}
+The released chronology consists of five sessions for BNCI2014\_004, three for
+Zhou2016, six or seven for Zhou2020, six recording days for Kumar2024, 15 blocks
+over three days for Ma2020, and seven or 11 recording days for Stieger2021.
+Exact elapsed intervals were unavailable for BNCI2014\_004; all temporal contrasts
+therefore use source-defined order rather than a pooled elapsed-time scale.
+
+\Needspace{8\baselineskip}
+\section{Interval Definitions and Donor-Sampling Uncertainty}
+\label{app:uncertainty}
+\subsection{Dataset-Level Synthesis}
+Let $y_d$ and $v_d$ be the participant mean and its estimated sampling variance
+for dataset $d$, and let $k=6$. With restricted-maximum-likelihood estimate
+$\widehat\tau^2$, the weights and pooled mean are
+\begin{equation}
+w_d=(v_d+\widehat\tau^2)^{-1},\qquad
+\widehat\mu=\frac{\sum_d w_d y_d}{\sum_d w_d}.
+\end{equation}
+The reported interval is $\widehat\mu\pm
+t_{k-1,0.975}(\sum_d w_d)^{-1/2}$; the prediction interval is
+$\widehat\mu\pm t_{k-2,0.975}
+\sqrt{\widehat\tau^2+(\sum_d w_d)^{-1}}$.
+As a residual-scale sensitivity analysis, define
+$q=\sum_d w_d(y_d-\widehat\mu)^2/(k-1)$ and replace the mean standard error
+by $\sqrt{q/\sum_d w_d}$. This gives intervals of
+[\AllMetaHKLo{}, \AllMetaHKHi{}] for all origins and
+[\CondMetaHKLo{}, \CondMetaHKHi{}] for conditional targets.
+
+\subsection{Five-Draw Uniform Reference}
+The cached per-row standard deviation $s_{r,0}$ uses divisor $B=5$.
+The sample-standard-deviation correction gives a marginal standard error of
+$e_r=s_{r,0}/\sqrt{B-1}$ for the sampled row mean. Rows share random draws
+across decoders; the cached summaries retain marginal variation but not the
+cross-row covariances. For nonnegative participant-averaging weights $a_r$
+summing to one, we report
+\begin{equation}
+U=\sum_r a_r e_r.
+\end{equation}
+The triangle inequality bounds the aggregate standard error by $U$ under the
+estimated marginal variances, allowing arbitrary cross-row covariance.
+This is a plug-in bound rather than a statistical confidence upper limit.
+The corresponding values are \CondMatchedTriangleSE{} AUC on all conditional
+targets and \StrictMatchedTriangleSE{} on strict-future support. The result files
+also report the median, 95th percentile, and maximum marginal row-level standard
+error. Participant confidence intervals for the partition condition on
+the realized donor draws; donor-sampling uncertainty is reported separately.
+The unsampled LOSO--expanding contrast is unchanged by the reference draws.
+
+\FloatBarrier
+
+% Balance the references and biography on the final two-column page.
+\balance
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\begin{IEEEbiographynophoto}{Yiming Shen}
+conducts research on electroencephalography, brain--computer interfaces,
+longitudinal model evaluation, domain adaptation, and reproducible statistical
+learning.\EOD
+\end{IEEEbiographynophoto}
+\end{document}

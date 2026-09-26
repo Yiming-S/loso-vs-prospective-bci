@@ -1,0 +1,5 @@
+contrast,participants,participant_targets,fits,datasets,target_range,mean_history_size
+Conditional LOSO - expanding,138,1001,2002,BNCI2014_004:27; Kumar2024:72; Ma2020:325; Stieger2021:474; Zhou2016:4; Zhou2020:99,1--13,4.963036963036963
+All origins LOSO - expanding,138,1139,2278,BNCI2014_004:36; Kumar2024:90; Ma2020:350; Stieger2021:536; Zhou2016:8; Zhou2020:119,1--14,5.361720807726075
+Uniform donor-count-matched,138,1001,2002,BNCI2014_004:27; Kumar2024:72; Ma2020:325; Stieger2021:474; Zhou2016:4; Zhou2020:99,1--13,4.963036963036963
+Strict future common support,138,560,1120,BNCI2014_004:18; Kumar2024:36; Ma2020:175; Stieger2021:268; Zhou2016:4; Zhou2020:59,1--7,2.9339285714285714

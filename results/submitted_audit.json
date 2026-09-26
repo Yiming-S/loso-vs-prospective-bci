@@ -1,0 +1,57 @@
+{
+  "scope": "submitted-classical",
+  "ok": true,
+  "errors": [],
+  "checked": [
+    "classical result keys and participant/target coverage",
+    "paired AUC agreement",
+    "final-origin structural zeros",
+    "saved estimand and support-specific contrast means",
+    "matched-draw metadata and marginal-SE/triangle-bound summaries",
+    "Ma2020 day result coverage",
+    "manuscript vector figure presence and dimensions"
+  ],
+  "not_checked": [
+    "raw EEG",
+    "epoch length or channel count",
+    "model refitting",
+    "preprocessing correctness",
+    "historical cache provenance"
+  ],
+  "environment": {
+    "python": "3.12.14",
+    "packages": {
+      "numpy": "2.1.3",
+      "pandas": "2.3.3",
+      "scipy": "1.16.3",
+      "matplotlib": "3.10.0",
+      "statsmodels": "0.14.5"
+    }
+  },
+  "detail": {
+    "BNCI2014_004": {
+      "participants": 9,
+      "wide_rows": 72
+    },
+    "Zhou2016": {
+      "participants": 4,
+      "wide_rows": 16
+    },
+    "Zhou2020": {
+      "participants": 20,
+      "wide_rows": 238
+    },
+    "Kumar2024": {
+      "participants": 18,
+      "wide_rows": 180
+    },
+    "Ma2020": {
+      "participants": 25,
+      "wide_rows": 700
+    },
+    "Stieger2021": {
+      "participants": 62,
+      "wide_rows": 1072
+    }
+  }
+}

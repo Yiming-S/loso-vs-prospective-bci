@@ -1,0 +1,46 @@
+{
+  "dataset": "Stieger2021",
+  "reason": "Legacy Stieger epochs already equal the audited 0-3 s, 128 Hz, 384-sample analysis window; model definitions, protocol sets, and the canonical random seed are unchanged.",
+  "preprocess_version": "v2_8-35Hz_0-3s_62eeg",
+  "random_state": 20260716,
+  "verified_legacy_caches": 62,
+  "current_code_sha256": {
+    "src/data.py": "418d7e1ae0a32f54df35812e499c36e752774a5007dbb2858a43d96d2919e497",
+    "src/models.py": "2255d05f5059cc63e640955bcf4251234cd29e18679a5d1a21bbf07c9734c3a9",
+    "src/evaluate.py": "00fe07a9fecad6234abe36f47f332ec873204e86c70f11773038ebff1f8060b9",
+    "src/splitters.py": "0082a37acf0400523c870cad1d1a80b6af7de53880f87cfab7301af2e6cfe59b"
+  },
+  "copied": {
+    "auc_Stieger2021.csv": {
+      "source": "archive/pre_v2_20260719/results_raw/auc_Stieger2021.csv",
+      "source_sha256": "4f7834d20108dad0c2a9933fc150d7d91e5b900666ea5a7ab455e0c88d084deb",
+      "destination": "results/raw/auc_Stieger2021.csv",
+      "rows": 6618,
+      "models": [
+        "csp_lda",
+        "eegnet",
+        "ts_lr"
+      ]
+    },
+    "auc_matched_Stieger2021.csv": {
+      "source": "archive/pre_v2_20260719/results_raw/auc_matched_Stieger2021.csv",
+      "source_sha256": "894b8281d6fb1f65a5d62550882b0ea2715f4165f18852fb1372f4ea4a5ad080",
+      "destination": "results/raw/auc_matched_Stieger2021.csv",
+      "rows": 1608,
+      "models": [
+        "csp_lda",
+        "ts_lr"
+      ]
+    },
+    "transfer_Stieger2021.csv": {
+      "source": "archive/pre_v2_20260719/results_raw/transfer_Stieger2021.csv",
+      "source_sha256": "94cfaf27bec0b3e33cfa0346121bee5593ca15dcf826fc216e3e8b26d5b23706",
+      "destination": "results/raw/transfer_Stieger2021.csv",
+      "rows": 10784,
+      "models": [
+        "csp_lda",
+        "ts_lr"
+      ]
+    }
+  }
+}
