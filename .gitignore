@@ -1,0 +1,57 @@
+# Local environments and credentials
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Downloaded EEG, preprocessed caches, and local data stores
+cache/
+external_data/
+raw_eeg/
+*.cnt
+*.mat
+*.edf
+*.gdf
+*.bdf
+*.fif
+*.fif.gz
+*.set
+*.fdt
+*.npy
+*.npz
+*.pkl
+*.pickle
+
+# Python and operating-system artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.coverage
+.DS_Store
+.mpl-cache/
+tmp/
+logs/
+archive/
+results/raw/
+results/robustness/
+
+# LaTeX intermediates; keep paper/main.pdf and figure PDFs under version control
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+
+# Generated distribution archives and raster previews
+output/reproducibility/*.zip
+results/figures/*.png

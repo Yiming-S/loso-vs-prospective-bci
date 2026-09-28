@@ -845,5 +845,99 @@
       "time_unit": "block"
     }
   },
-  "structural_zero_rows": 276
+  "structural_zero_rows": 276,
+  "leave_one_dataset_out": {
+    "weighting": "Equal remaining participants; equal available target-decoder rows within each participant",
+    "inference": "Point-only dataset-exclusion sensitivity; no confidence interval or new-dataset prediction claim",
+    "by_estimand": {
+      "all_origin": [
+        {
+          "excluded_dataset": "BNCI2014_004",
+          "excluded_participants": 9,
+          "remaining_datasets": 5,
+          "remaining_participants": 129,
+          "mean": 0.03134611140856153
+        },
+        {
+          "excluded_dataset": "Kumar2024",
+          "excluded_participants": 18,
+          "remaining_datasets": 5,
+          "remaining_participants": 120,
+          "mean": 0.02763477098184348
+        },
+        {
+          "excluded_dataset": "Ma2020",
+          "excluded_participants": 25,
+          "remaining_datasets": 5,
+          "remaining_participants": 113,
+          "mean": 0.028947525090987036
+        },
+        {
+          "excluded_dataset": "Stieger2021",
+          "excluded_participants": 62,
+          "remaining_datasets": 5,
+          "remaining_participants": 76,
+          "mean": 0.02783191366991134
+        },
+        {
+          "excluded_dataset": "Zhou2016",
+          "excluded_participants": 4,
+          "remaining_datasets": 5,
+          "remaining_participants": 134,
+          "mean": 0.030360566283722
+        },
+        {
+          "excluded_dataset": "Zhou2020",
+          "excluded_participants": 20,
+          "remaining_datasets": 5,
+          "remaining_participants": 118,
+          "mean": 0.031313025320435006
+        }
+      ],
+      "conditional": [
+        {
+          "excluded_dataset": "BNCI2014_004",
+          "excluded_participants": 9,
+          "remaining_datasets": 5,
+          "remaining_participants": 129,
+          "mean": 0.036585713421420765
+        },
+        {
+          "excluded_dataset": "Kumar2024",
+          "excluded_participants": 18,
+          "remaining_datasets": 5,
+          "remaining_participants": 120,
+          "mean": 0.03179220284938661
+        },
+        {
+          "excluded_dataset": "Ma2020",
+          "excluded_participants": 25,
+          "remaining_datasets": 5,
+          "remaining_participants": 113,
+          "mean": 0.03453521716438908
+        },
+        {
+          "excluded_dataset": "Stieger2021",
+          "excluded_participants": 62,
+          "remaining_datasets": 5,
+          "remaining_participants": 76,
+          "mean": 0.03308147970077287
+        },
+        {
+          "excluded_dataset": "Zhou2016",
+          "excluded_participants": 4,
+          "remaining_datasets": 5,
+          "remaining_participants": 134,
+          "mean": 0.035299067378020806
+        },
+        {
+          "excluded_dataset": "Zhou2020",
+          "excluded_participants": 20,
+          "remaining_datasets": 5,
+          "remaining_participants": 118,
+          "mean": 0.03647955077464708
+        }
+      ]
+    }
+  }
 }

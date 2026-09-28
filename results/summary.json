@@ -1,0 +1,1258 @@
+{
+  "datasets": [
+    "BNCI2014_004",
+    "Kumar2024",
+    "Ma2020",
+    "Stieger2021",
+    "Zhou2016",
+    "Zhou2020"
+  ],
+  "models": [
+    "csp_lda",
+    "eegnet",
+    "ts_lr"
+  ],
+  "headline_models": [
+    "csp_lda",
+    "ts_lr"
+  ],
+  "n_auc_rows": 14992,
+  "n_gap_rows": 2814,
+  "n_interior_rows": 2476,
+  "n_interior_rows_classical": 2002,
+  "n_structural_zero_rows": 338,
+  "n_subjects": 138,
+  "T_values": [
+    3,
+    5,
+    6,
+    7,
+    11,
+    15
+  ],
+  "H1_vs_forward": {
+    "n": 2002,
+    "mean": 0.03464512597502131,
+    "median": 0.02231783413848626,
+    "sd": 0.08219108460096863,
+    "n_subjects": 138,
+    "subject_mean": 0.03476225418867759,
+    "ci": [
+      0.02968172586685846,
+      0.039842782510496715
+    ],
+    "subj_t": 13.530082323748863,
+    "subj_p_twosided": 5.111092765941851e-27,
+    "subj_p_onesided": 2.5555463829709255e-27,
+    "subj_wilcoxon_p_twosided": 2.521217831803389e-20,
+    "subj_wilcoxon_p": 1.2606089159016945e-20,
+    "lmm_intercept": 0.03486853514891545,
+    "lmm_p_twosided": 9.254660988642967e-43,
+    "lmm_p_onesided": 4.627330494321483e-43,
+    "lmm_converged": true
+  },
+  "H1_vs_last": {
+    "n": 2002,
+    "mean": 0.07395477388595262,
+    "median": 0.061388888888888826,
+    "sd": 0.10954276842028675,
+    "n_subjects": 138,
+    "subject_mean": 0.06590257932124198,
+    "ci": [
+      0.05785529965870815,
+      0.07394985898377582
+    ],
+    "subj_t": 16.194021182979387,
+    "subj_p_twosided": 1.2670424727573223e-33,
+    "subj_p_onesided": 6.3352123637866115e-34,
+    "subj_wilcoxon_p_twosided": 5.805878792787707e-23,
+    "subj_wilcoxon_p": 2.902939396393853e-23,
+    "lmm_intercept": 0.06927659004481704,
+    "lmm_p_twosided": 1.9471454182241325e-64,
+    "lmm_p_onesided": 9.735727091120663e-65,
+    "lmm_converged": true
+  },
+  "H1_vs_first": {
+    "n": 2002,
+    "mean": 0.11123380194518859,
+    "median": 0.09999999999999998,
+    "sd": 0.11916881682417126,
+    "n_subjects": 138,
+    "subject_mean": 0.10317536477858529,
+    "ci": [
+      0.09051660888543323,
+      0.11583412067173735
+    ],
+    "subj_t": 16.11708041255841,
+    "subj_p_twosided": 1.946749775462997e-33,
+    "subj_p_onesided": 9.733748877314984e-34,
+    "subj_wilcoxon_p_twosided": 2.9411376491978765e-23,
+    "subj_wilcoxon_p": 1.4705688245989382e-23,
+    "lmm_intercept": 0.1051749511147036,
+    "lmm_p_twosided": 3.461035875286538e-63,
+    "lmm_p_onesided": 1.730517937643269e-63,
+    "lmm_converged": true
+  },
+  "H1_by_model": {
+    "csp_lda": {
+      "n": 1001,
+      "mean": 0.03504994357520452,
+      "median": 0.022499999999999964,
+      "sd": 0.09822874792330433,
+      "n_subjects": 138,
+      "subject_mean": 0.03644166607943593,
+      "ci": [
+        0.028681948444812255,
+        0.0442013837140596
+      ],
+      "subj_t": 9.28653481048046,
+      "subj_p_twosided": 3.2284960544435074e-16,
+      "subj_p_onesided": 1.6142480272217537e-16,
+      "subj_wilcoxon_p_twosided": 5.765231441184359e-16,
+      "subj_wilcoxon_p": 2.8826157205921794e-16,
+      "lmm_intercept": 0.03240134499289773,
+      "lmm_p_twosided": 1.7881183592497827e-25,
+      "lmm_p_onesided": 8.940591796248913e-26,
+      "lmm_converged": true
+    },
+    "eegnet": {
+      "n": 474,
+      "mean": 0.09073978318906183,
+      "median": 0.0469805556762079,
+      "sd": 0.11837831624239173,
+      "n_subjects": 62,
+      "subject_mean": 0.09279499913188424,
+      "ci": [
+        0.0788854311858536,
+        0.10670456707791488
+      ],
+      "subj_t": 13.340102981894004,
+      "subj_p_twosided": 9.61384626447092e-20,
+      "subj_p_onesided": 4.80692313223546e-20,
+      "subj_wilcoxon_p_twosided": 8.356926594151027e-12,
+      "subj_wilcoxon_p": 4.178463297075514e-12,
+      "lmm_intercept": 0.09151283423370488,
+      "lmm_p_twosided": 1.9615001059712506e-39,
+      "lmm_p_onesided": 9.807500529856253e-40,
+      "lmm_converged": true
+    },
+    "ts_lr": {
+      "n": 1001,
+      "mean": 0.0342403083748381,
+      "median": 0.022021456804065642,
+      "sd": 0.062195571781611336,
+      "n_subjects": 138,
+      "subject_mean": 0.03308284229791924,
+      "ci": [
+        0.02861817744704019,
+        0.03754750714879829
+      ],
+      "subj_t": 14.652621671789927,
+      "subj_p_twosided": 7.773113390319894e-30,
+      "subj_p_onesided": 3.886556695159947e-30,
+      "subj_wilcoxon_p_twosided": 1.005488706165925e-22,
+      "subj_wilcoxon_p": 5.027443530829625e-23,
+      "lmm_intercept": 0.05482066761363637,
+      "lmm_p_twosided": 1.0282979138174388e-65,
+      "lmm_p_onesided": 5.141489569087194e-66,
+      "lmm_converged": true
+    }
+  },
+  "H1_by_dataset": {
+    "BNCI2014_004": {
+      "n": 54,
+      "mean": 0.008626005186025012,
+      "median": 0.002187500000000009,
+      "sd": 0.043473540805699554,
+      "n_subjects": 9,
+      "subject_mean": 0.008626005186025014,
+      "ci": [
+        -0.010155748876574396,
+        0.027407759248624423
+      ],
+      "subj_t": 1.059091901798295,
+      "subj_p_twosided": 0.3204848421124598,
+      "subj_p_onesided": 0.1602424210562299,
+      "subj_wilcoxon_p_twosided": 0.12890625,
+      "subj_wilcoxon_p": 0.064453125,
+      "lmm_intercept": 0.008626005186025016,
+      "lmm_p_twosided": 0.26130450178800124,
+      "lmm_p_onesided": 0.13065225089400062,
+      "lmm_converged": true
+    },
+    "Kumar2024": {
+      "n": 144,
+      "mean": 0.054562596450617284,
+      "median": 0.027777777777777735,
+      "sd": 0.0927363577200384,
+      "n_subjects": 18,
+      "subject_mean": 0.054562596450617284,
+      "ci": [
+        0.03569808471840077,
+        0.0734271081828338
+      ],
+      "subj_t": 6.102305619813246,
+      "subj_p_twosided": 1.1729769737477293e-05,
+      "subj_p_onesided": 5.864884868738647e-06,
+      "subj_wilcoxon_p_twosided": 7.62939453125e-06,
+      "subj_wilcoxon_p": 3.814697265625e-06,
+      "lmm_intercept": 0.05456259645061727,
+      "lmm_p_twosided": 3.399689939342275e-10,
+      "lmm_p_onesided": 1.6998449696711375e-10,
+      "lmm_converged": true
+    },
+    "Ma2020": {
+      "n": 650,
+      "mean": 0.03578846153846153,
+      "median": 0.029999999999999916,
+      "sd": 0.09192222346702138,
+      "n_subjects": 25,
+      "subject_mean": 0.03578846153846153,
+      "ci": [
+        0.02407031915185608,
+        0.04750660392506699
+      ],
+      "subj_t": 6.303367193808914,
+      "subj_p_twosided": 1.623782217728768e-06,
+      "subj_p_onesided": 8.11891108864384e-07,
+      "subj_wilcoxon_p_twosided": 1.233816146850586e-05,
+      "subj_wilcoxon_p": 6.16908073425293e-06,
+      "lmm_intercept": 0.035788461538461505,
+      "lmm_p_twosided": 1.2483239653976248e-10,
+      "lmm_p_onesided": 6.241619826988124e-11,
+      "lmm_converged": true
+    },
+    "Stieger2021": {
+      "n": 948,
+      "mean": 0.034734114204148084,
+      "median": 0.020651500153046398,
+      "sd": 0.07834494213849731,
+      "n_subjects": 62,
+      "subject_mean": 0.03682255839965755,
+      "ci": [
+        0.02999751077445058,
+        0.04364760602486451
+      ],
+      "subj_t": 10.788387170203213,
+      "subj_p_twosided": 9.030943695596926e-16,
+      "subj_p_onesided": 4.515471847798463e-16,
+      "subj_wilcoxon_p_twosided": 2.728449070779152e-10,
+      "subj_wilcoxon_p": 1.364224535389576e-10,
+      "lmm_intercept": 0.0356365827332673,
+      "lmm_p_twosided": 2.984122279857328e-24,
+      "lmm_p_onesided": 1.492061139928664e-24,
+      "lmm_converged": true
+    },
+    "Zhou2016": {
+      "n": 8,
+      "mean": 0.01677901234567901,
+      "median": 0.005093827160493836,
+      "sd": 0.0312969237663601,
+      "n_subjects": 4,
+      "subject_mean": 0.01677901234567901,
+      "ci": [
+        -0.02532758942165686,
+        0.05888561411301488
+      ],
+      "subj_t": 1.2681694462279987,
+      "subj_p_twosided": 0.29421198534225307,
+      "subj_p_onesided": 0.14710599267112653,
+      "subj_wilcoxon_p_twosided": 0.625,
+      "subj_wilcoxon_p": 0.3125,
+      "lmm_intercept": 0.01677901234567901,
+      "lmm_p_twosided": 0.14309545802379345,
+      "lmm_p_onesided": 0.07154772901189672,
+      "lmm_converged": true
+    },
+    "Zhou2020": {
+      "n": 198,
+      "mean": 0.02379824075131626,
+      "median": 0.019166666666666665,
+      "sd": 0.062267402329876285,
+      "n_subjects": 20,
+      "subject_mean": 0.02463020433145742,
+      "ci": [
+        0.012286214495149774,
+        0.03697419416776507
+      ],
+      "subj_t": 4.17625182897519,
+      "subj_p_twosided": 0.0005123383206528969,
+      "subj_p_onesided": 0.00025616916032644845,
+      "subj_wilcoxon_p_twosided": 0.0001049041748046875,
+      "subj_wilcoxon_p": 5.245208740234375e-05,
+      "lmm_intercept": 0.02406434606700917,
+      "lmm_p_twosided": 8.195925317250135e-06,
+      "lmm_p_onesided": 4.097962658625067e-06,
+      "lmm_converged": true
+    }
+  },
+  "H2_model": {
+    "n": 2002,
+    "n_subjects": 138,
+    "formula": "delta ~ drift_z + target_session + C(model) + C(dataset)",
+    "backend": "mixedlm",
+    "params": {
+      "Intercept": 0.024212920961811036,
+      "C(model)[T.ts_lr]": -0.0008096352003664428,
+      "C(dataset)[T.Kumar2024]": 0.04948992865690039,
+      "C(dataset)[T.Ma2020]": 0.0647724169141887,
+      "C(dataset)[T.Stieger2021]": 0.04540537704537287,
+      "C(dataset)[T.Zhou2016]": -0.00022333492648002177,
+      "C(dataset)[T.Zhou2020]": 0.022688416665510452,
+      "drift_z": 0.0016802783552691298,
+      "target_session": -0.007540971591615275,
+      "Group Var": 0.0620877105044207
+    },
+    "pvalues": {
+      "Intercept": 0.050493069532719176,
+      "C(model)[T.ts_lr]": 0.8128836902539811,
+      "C(dataset)[T.Kumar2024]": 0.0006348064100138779,
+      "C(dataset)[T.Ma2020]": 1.57782706505284e-06,
+      "C(dataset)[T.Stieger2021]": 0.00038285173379760403,
+      "C(dataset)[T.Zhou2016]": 0.9942868315209145,
+      "C(dataset)[T.Zhou2020]": 0.10599744982745048,
+      "drift_z": 0.37670498651387063,
+      "target_session": 3.3840745897016915e-34,
+      "Group Var": 8.348550401152378e-05
+    },
+    "drift_beta": 0.0016802783552691298,
+    "drift_p": 0.37670498651387063,
+    "drift_ci": [
+      -0.002045225728879104,
+      0.005405782439417363
+    ]
+  },
+  "H2_mechanism": {
+    "n": 2002,
+    "formula": "delta ~ drift_z + sessions_after + C(model) + C(dataset)",
+    "backend": "mixedlm",
+    "drift_z_beta": 0.003751850257881292,
+    "drift_z_p": 0.039975267302358286,
+    "sessions_after_beta": 0.0074290566167414225,
+    "sessions_after_p": 1.659159341618055e-30,
+    "params": {
+      "Intercept": -1.072089986473286e-18,
+      "C(model)[T.ts_lr]": -0.0008096352003664355,
+      "C(dataset)[T.Kumar2024]": -9.025656633788953e-19,
+      "C(dataset)[T.Ma2020]": -9.6133409238359e-19,
+      "C(dataset)[T.Stieger2021]": -1.5873777996843791e-19,
+      "C(dataset)[T.Zhou2016]": 0.0,
+      "C(dataset)[T.Zhou2020]": -3.3164748858840475e-20,
+      "drift_z": 0.003751850257881292,
+      "sessions_after": 0.0074290566167414225,
+      "Group Var": 2.630719613607705e-33
+    },
+    "pvalues": {
+      "Intercept": 0.9999999999999999,
+      "C(model)[T.ts_lr]": 0.8225383669156376,
+      "C(dataset)[T.Kumar2024]": 0.9999999999999999,
+      "C(dataset)[T.Ma2020]": 0.9999999999999999,
+      "C(dataset)[T.Stieger2021]": 1.0,
+      "C(dataset)[T.Zhou2016]": 1.0,
+      "C(dataset)[T.Zhou2020]": 1.0,
+      "drift_z": 0.039975267302358286,
+      "sessions_after": 1.659159341618055e-30,
+      "Group Var": 1.0
+    }
+  },
+  "H2_per_dataset": [
+    {
+      "dataset": "BNCI2014_004",
+      "n": 54,
+      "n_subjects": 9,
+      "mean_delta": 0.008626005186025012,
+      "slope": 0.0069480175471650285,
+      "slope_p": 0.28961962972606303
+    },
+    {
+      "dataset": "Kumar2024",
+      "n": 144,
+      "n_subjects": 18,
+      "mean_delta": 0.054562596450617284,
+      "slope": 0.023560375097340436,
+      "slope_p": 0.01133614755468911
+    },
+    {
+      "dataset": "Ma2020",
+      "n": 650,
+      "n_subjects": 25,
+      "mean_delta": 0.03578846153846153,
+      "slope": -0.012498068591312028,
+      "slope_p": 0.002013920845331876
+    },
+    {
+      "dataset": "Stieger2021",
+      "n": 948,
+      "n_subjects": 62,
+      "mean_delta": 0.034734114204148084,
+      "slope": 0.006455794000360247,
+      "slope_p": 0.02686363354245375
+    },
+    {
+      "dataset": "Zhou2016",
+      "n": 8,
+      "n_subjects": 4,
+      "mean_delta": 0.01677901234567901,
+      "slope": -0.0008916420654141808,
+      "slope_p": 0.948830405354394
+    },
+    {
+      "dataset": "Zhou2020",
+      "n": 198,
+      "n_subjects": 20,
+      "mean_delta": 0.02379824075131626,
+      "slope": 0.005380041540116176,
+      "slope_p": 0.22817999275506684
+    }
+  ],
+  "mechanism_decomposition": {
+    "n": 2002,
+    "n_subjects": 138,
+    "drift_only": {
+      "formula": "delta ~ drift_z + C(model) + C(dataset)",
+      "aic": -4361.100874182457,
+      "terms": {
+        "drift_z": {
+          "beta": 0.003598830467913121,
+          "p": 0.06749660165085034,
+          "ci": [
+            -0.0002590560535465358,
+            0.007456716989372778
+          ]
+        }
+      }
+    },
+    "t_only": {
+      "formula": "delta ~ target_session + C(model) + C(dataset)",
+      "aic": -4503.755463083502,
+      "terms": {
+        "target_session": {
+          "beta": -0.007588246414017757,
+          "p": 7.970565109254618e-35,
+          "ci": [
+            -0.008796394423161847,
+            -0.0063800984048736666
+          ]
+        }
+      }
+    },
+    "log_t_only": {
+      "formula": "delta ~ log_t + C(model) + C(dataset)",
+      "aic": -4562.214982365696,
+      "terms": {
+        "log_t": {
+          "beta": -0.03704478224530841,
+          "p": 8.523776074957252e-49,
+          "ci": [
+            -0.04199036528978364,
+            -0.03209919920083318
+          ]
+        }
+      }
+    },
+    "full": {
+      "formula": "delta ~ log_t + log_Tm1 + drift_z + C(model) + C(dataset)",
+      "aic": -4558.320305599185,
+      "terms": {
+        "log_t": {
+          "beta": -0.036882002253311084,
+          "p": 1.4559794471983952e-46,
+          "ci": [
+            -0.04192707316512156,
+            -0.03183693134150061
+          ]
+        },
+        "log_Tm1": {
+          "beta": -0.004405228803178425,
+          "p": 0.7751735612771238,
+          "ci": [
+            -0.0346351236466957,
+            0.025824666040338846
+          ]
+        },
+        "drift_z": {
+          "beta": 0.00031166403370641024,
+          "p": 0.8683854897873237,
+          "ci": [
+            -0.003374605660826478,
+            0.003997933728239298
+          ]
+        }
+      }
+    }
+  },
+  "natural_experiment_stieger": {
+    "n_T7": 21,
+    "n_T11": 41,
+    "mean_T7": 0.05909771960697073,
+    "mean_T11": 0.050669312393303245,
+    "diff_T11_minus_T7": -0.008428407213667485,
+    "p_twosided": 0.36932824667053377,
+    "lmm_T11_effect": -0.009601963621691552,
+    "lmm_p": 0.29181649769040385
+  },
+  "size_matched": {
+    "matched_vs_forward": {
+      "contrast": "loso_matched - forward_expanding",
+      "n": 2002,
+      "n_subjects": 138,
+      "mean": 0.008037408598562334,
+      "subject_mean": 0.009296833752340689,
+      "p_twosided": 4.5153905284890616e-05,
+      "ci": [
+        0.004934829500488683,
+        0.013658838004192694
+      ],
+      "by_dataset": {
+        "BNCI2014_004": 0.0022352410871755973,
+        "Kumar2024": 0.02430815972222222,
+        "Ma2020": 0.0054515384615384565,
+        "Stieger2021": 0.008339977100962237,
+        "Zhou2016": -0.0029640740740740495,
+        "Zhou2020": 0.00918941337683053
+      },
+      "tost": {
+        "margin_0.01": {
+          "n": 138,
+          "margin": 0.01,
+          "mean": 0.009296833752340689,
+          "se": 0.0022058943060750645,
+          "p_tost": 0.37519434884846475,
+          "equivalent": false,
+          "ci90": [
+            0.0056437578974186525,
+            0.012949909607262725
+          ],
+          "ci90_within_margin": false
+        },
+        "margin_0.02": {
+          "n": 138,
+          "margin": 0.02,
+          "mean": 0.009296833752340689,
+          "se": 0.0022058943060750645,
+          "p_tost": 1.638459025628551e-06,
+          "equivalent": true,
+          "ci90": [
+            0.0056437578974186525,
+            0.012949909607262725
+          ],
+          "ci90_within_margin": true
+        }
+      },
+      "power_01": {
+        "n": 138,
+        "effect": 0.01,
+        "sd": 0.025913390692097124,
+        "power": 0.9979210223460182
+      }
+    },
+    "future_vs_forward": {
+      "contrast": "future_matched - forward_expanding",
+      "n": 1120,
+      "n_subjects": 138,
+      "mean": 0.0113546871102534,
+      "subject_mean": 0.016520058241131296,
+      "p_twosided": 0.00055332989460245,
+      "ci": [
+        0.007283517186487785,
+        0.025756599295774806
+      ],
+      "by_dataset": {
+        "BNCI2014_004": 0.011618325223607943,
+        "Kumar2024": 0.051686535493827145,
+        "Ma2020": 0.0006842857142857039,
+        "Stieger2021": 0.015967127590169664,
+        "Zhou2016": 0.005759876543209891,
+        "Zhou2020": 0.01073684558771289
+      },
+      "tost": {
+        "margin_0.01": {
+          "n": 138,
+          "margin": 0.01,
+          "mean": 0.016520058241131296,
+          "se": 0.0046709797019606316,
+          "p_tost": 0.9174934533047505,
+          "equivalent": false,
+          "ci90": [
+            0.008784672587761437,
+            0.024255443894501155
+          ],
+          "ci90_within_margin": false
+        },
+        "margin_0.02": {
+          "n": 138,
+          "margin": 0.02,
+          "mean": 0.016520058241131296,
+          "se": 0.0046709797019606316,
+          "p_tost": 0.22876993872132256,
+          "equivalent": false,
+          "ci90": [
+            0.008784672587761437,
+            0.024255443894501155
+          ],
+          "ci90_within_margin": false
+        }
+      },
+      "power_01": {
+        "n": 138,
+        "effect": 0.01,
+        "sd": 0.05487158727343046,
+        "power": 0.686315865364852
+      }
+    },
+    "loso_vs_matched": {
+      "contrast": "loso - loso_matched",
+      "n": 2002,
+      "n_subjects": 138,
+      "mean": 0.02660771737645898,
+      "subject_mean": 0.025465420436336896,
+      "p_twosided": 2.690227299149179e-28,
+      "ci": [
+        0.02187812464245044,
+        0.029052716230223354
+      ],
+      "by_dataset": {
+        "BNCI2014_004": 0.006390764098849415,
+        "Kumar2024": 0.030254436728395055,
+        "Ma2020": 0.03033692307692308,
+        "Stieger2021": 0.028482581298695304,
+        "Zhou2016": 0.01974308641975306,
+        "Zhou2020": 0.015440790954626887
+      }
+    }
+  },
+  "size_share": {
+    "point": 0.7325595255738979,
+    "range_from_lookahead_ci": [
+      0.6070784728154507,
+      0.8580405783323451
+    ],
+    "note": "share falls as the look-ahead component rises to its CI upper bound"
+  },
+  "common_support_models": {
+    "n_subjects_common": 62,
+    "models": [
+      "csp_lda",
+      "eegnet",
+      "ts_lr"
+    ],
+    "per_model": {
+      "csp_lda": {
+        "mean": 0.039384688198547214,
+        "p_twosided": 6.914675886967501e-09,
+        "ci": [
+          0.027670770774512805,
+          0.051098605622581623
+        ]
+      },
+      "eegnet": {
+        "mean": 0.09279499913188424,
+        "p_twosided": 9.61384626447092e-20,
+        "ci": [
+          0.0788854311858536,
+          0.10670456707791488
+        ]
+      },
+      "ts_lr": {
+        "mean": 0.034260428600767875,
+        "p_twosided": 1.3983156594823333e-18,
+        "ci": [
+          0.02880999396703156,
+          0.03971086323450419
+        ]
+      }
+    }
+  },
+  "dose_response": [
+    {
+      "sessions_after": 1,
+      "mean": 0.010789881144733296,
+      "p_twosided": 0.0007378338660926037,
+      "n_subjects": 138,
+      "n_datasets": 6,
+      "datasets": [
+        "BNCI2014_004",
+        "Kumar2024",
+        "Ma2020",
+        "Stieger2021",
+        "Zhou2016",
+        "Zhou2020"
+      ],
+      "ci": [
+        0.004610880989613222,
+        0.01696888129985337
+      ]
+    },
+    {
+      "sessions_after": 2,
+      "mean": 0.010818322385320638,
+      "p_twosided": 0.006145886198736855,
+      "n_subjects": 134,
+      "n_datasets": 5,
+      "datasets": [
+        "BNCI2014_004",
+        "Kumar2024",
+        "Ma2020",
+        "Stieger2021",
+        "Zhou2020"
+      ],
+      "ci": [
+        0.0031331956289136816,
+        0.018503449141727593
+      ]
+    },
+    {
+      "sessions_after": 3,
+      "mean": 0.02435464667508509,
+      "p_twosided": 1.0431330266735673e-06,
+      "n_subjects": 134,
+      "n_datasets": 5,
+      "datasets": [
+        "BNCI2014_004",
+        "Kumar2024",
+        "Ma2020",
+        "Stieger2021",
+        "Zhou2020"
+      ],
+      "ci": [
+        0.014947718406096494,
+        0.03376157494407368
+      ]
+    },
+    {
+      "sessions_after": 4,
+      "mean": 0.04383156994801972,
+      "p_twosided": 4.918364292232009e-09,
+      "n_subjects": 125,
+      "n_datasets": 4,
+      "datasets": [
+        "Kumar2024",
+        "Ma2020",
+        "Stieger2021",
+        "Zhou2020"
+      ],
+      "ci": [
+        0.030043189552963128,
+        0.05761995034307631
+      ]
+    },
+    {
+      "sessions_after": 5,
+      "mean": 0.044258265782307335,
+      "p_twosided": 2.73415609925682e-10,
+      "n_subjects": 106,
+      "n_datasets": 3,
+      "datasets": [
+        "Ma2020",
+        "Stieger2021",
+        "Zhou2020"
+      ],
+      "ci": [
+        0.03168891690497097,
+        0.0568276146596437
+      ]
+    },
+    {
+      "sessions_after": 6,
+      "mean": 0.033655536677120096,
+      "p_twosided": 8.565631216158772e-06,
+      "n_subjects": 66,
+      "n_datasets": 2,
+      "datasets": [
+        "Ma2020",
+        "Stieger2021"
+      ],
+      "ci": [
+        0.01974837196568601,
+        0.04756270138855418
+      ]
+    },
+    {
+      "sessions_after": 7,
+      "mean": 0.04650049583215518,
+      "p_twosided": 7.652699138215686e-09,
+      "n_subjects": 66,
+      "n_datasets": 2,
+      "datasets": [
+        "Ma2020",
+        "Stieger2021"
+      ],
+      "ci": [
+        0.03250157196350504,
+        0.06049941970080532
+      ]
+    },
+    {
+      "sessions_after": 8,
+      "mean": 0.04386110380037673,
+      "p_twosided": 2.8092861555198315e-06,
+      "n_subjects": 66,
+      "n_datasets": 2,
+      "datasets": [
+        "Ma2020",
+        "Stieger2021"
+      ],
+      "ci": [
+        0.026790521876313176,
+        0.060931685724440285
+      ]
+    },
+    {
+      "sessions_after": 9,
+      "mean": 0.058422518728253006,
+      "p_twosided": 3.185418322250447e-07,
+      "n_subjects": 66,
+      "n_datasets": 2,
+      "datasets": [
+        "Ma2020",
+        "Stieger2021"
+      ],
+      "ci": [
+        0.03794339146068798,
+        0.07890164599581803
+      ]
+    },
+    {
+      "sessions_after": 10,
+      "mean": 0.021899999999999985,
+      "p_twosided": 0.2065588423796494,
+      "n_subjects": 25,
+      "n_datasets": 1,
+      "datasets": [
+        "Ma2020"
+      ],
+      "ci": [
+        -0.012917177075184017,
+        0.05671717707518399
+      ]
+    },
+    {
+      "sessions_after": 11,
+      "mean": 0.05439999999999998,
+      "p_twosided": 0.007445290719916529,
+      "n_subjects": 25,
+      "n_datasets": 1,
+      "datasets": [
+        "Ma2020"
+      ],
+      "ci": [
+        0.01598930070710787,
+        0.0928106992928921
+      ]
+    },
+    {
+      "sessions_after": 12,
+      "mean": 0.07424999999999998,
+      "p_twosided": 2.9516492974112456e-05,
+      "n_subjects": 25,
+      "n_datasets": 1,
+      "datasets": [
+        "Ma2020"
+      ],
+      "ci": [
+        0.044408475340514675,
+        0.10409152465948529
+      ]
+    },
+    {
+      "sessions_after": 13,
+      "mean": 0.1001,
+      "p_twosided": 0.0001119315583799836,
+      "n_subjects": 25,
+      "n_datasets": 1,
+      "datasets": [
+        "Ma2020"
+      ],
+      "ci": [
+        0.0552859068562898,
+        0.14491409314371018
+      ]
+    }
+  ],
+  "dose_slope": {
+    "beta": 0.007540499176480015,
+    "p": 1.3974358850450965e-31,
+    "ci": [
+      0.0062764834119467365,
+      0.008804514941013293
+    ],
+    "n": 2002
+  },
+  "leave_dataset_out": [
+    {
+      "dropped": "BNCI2014_004",
+      "mean": 0.036585713421420786,
+      "p_onesided": 8.751062806540498e-28,
+      "n_subjects": 129
+    },
+    {
+      "dropped": "Kumar2024",
+      "mean": 0.03179220284938663,
+      "p_onesided": 9.755389335682172e-24,
+      "n_subjects": 120
+    },
+    {
+      "dropped": "Ma2020",
+      "mean": 0.0345352171643891,
+      "p_onesided": 4.688224060867827e-22,
+      "n_subjects": 113
+    },
+    {
+      "dropped": "Stieger2021",
+      "mean": 0.03308147970077288,
+      "p_onesided": 1.6675924512406492e-13,
+      "n_subjects": 76
+    },
+    {
+      "dropped": "Zhou2016",
+      "mean": 0.03529906737802082,
+      "p_onesided": 4.614275993297257e-27,
+      "n_subjects": 134
+    },
+    {
+      "dropped": "Zhou2020",
+      "mean": 0.0364795507746471,
+      "p_onesided": 1.0814597191375793e-24,
+      "n_subjects": 118
+    },
+    {
+      "dropped": "Ma2020+Stieger2021 (both long-T)",
+      "mean": 0.03175452781955296,
+      "p_onesided": 1.7453680115222358e-08,
+      "n_subjects": 51
+    }
+  ],
+  "transfer_symmetry": {
+    "n_pairs": 5528,
+    "mean_future_minus_past": 0.008934405334363623,
+    "t": 5.470589942534918,
+    "p_twosided": 4.682624925654165e-08,
+    "subj_t": 4.322047637182773,
+    "subj_p_twosided": 2.9519049716038923e-05,
+    "n_subjects": 138
+  },
+  "donor_direction": {
+    "n_pairs": 5528,
+    "n_subjects": 138,
+    "mean_future_minus_past": 0.008934405334363623,
+    "subject_mean": 0.012070167050483091,
+    "p_twosided": 2.9519049716038923e-05,
+    "ci": [
+      0.0065478019432876795,
+      0.017592532157678503
+    ],
+    "by_lag": [
+      {
+        "L": 1,
+        "mean": 0.00687296734518943,
+        "p": 0.002975302112249349,
+        "n_subjects": 138
+      },
+      {
+        "L": 2,
+        "mean": 0.01540166601184526,
+        "p": 0.0010965895502792553,
+        "n_subjects": 134
+      },
+      {
+        "L": 3,
+        "mean": 0.01822093856888934,
+        "p": 0.005778218714831953,
+        "n_subjects": 106
+      },
+      {
+        "L": 4,
+        "mean": 0.011293548725602549,
+        "p": 0.07885406489955236,
+        "n_subjects": 66
+      },
+      {
+        "L": 5,
+        "mean": 0.015512434261958169,
+        "p": 0.11524245126897248,
+        "n_subjects": 66
+      },
+      {
+        "L": 6,
+        "mean": 0.02660833333333333,
+        "p": 0.05693793664900189,
+        "n_subjects": 25
+      },
+      {
+        "L": 7,
+        "mean": 0.044174999999999985,
+        "p": 0.08783949427841699,
+        "n_subjects": 25
+      }
+    ],
+    "lmm_intercept": -6.1736358189888035e-18,
+    "lmm_intercept_p": 0.9999999999999997,
+    "lmm_L_slope": 0.003693260371725448,
+    "lmm_L_p": 0.0024382358501057145
+  },
+  "practice_trend": [
+    {
+      "dataset": "BNCI2014_004",
+      "as_test_target_r": 0.8257985137624893,
+      "as_test_target_p": 0.08496201794128633,
+      "as_donor_r": -0.7753010997632825,
+      "as_donor_p": 0.12346019492374284
+    },
+    {
+      "dataset": "Kumar2024",
+      "as_test_target_r": 0.8329149742708416,
+      "as_test_target_p": 0.0395438184992639,
+      "as_donor_r": 0.5849975072154389,
+      "as_donor_p": 0.2226032720424997
+    },
+    {
+      "dataset": "Ma2020",
+      "as_test_target_r": 0.33012670431431457,
+      "as_test_target_p": 0.22947558797809992,
+      "as_donor_r": 0.18784624227091412,
+      "as_donor_p": 0.5025918648863118
+    },
+    {
+      "dataset": "Stieger2021",
+      "as_test_target_r": 0.9052830344774042,
+      "as_test_target_p": 0.00012629208290533648,
+      "as_donor_r": 0.7884824326735994,
+      "as_donor_p": 0.003930899317126762
+    },
+    {
+      "dataset": "Zhou2016",
+      "as_test_target_r": 0.995500049404141,
+      "as_test_target_p": 0.06041739372879461,
+      "as_donor_r": -0.3103866507116537,
+      "as_donor_p": 0.7990829622702231
+    },
+    {
+      "dataset": "Zhou2020",
+      "as_test_target_r": 0.7175675876385974,
+      "as_test_target_p": 0.06944744700401234,
+      "as_donor_r": -0.00996508135904739,
+      "as_donor_p": 0.9830835924157824
+    }
+  ],
+  "protocol_means": {
+    "first_session": 0.6653257488829737,
+    "forward_expanding": 0.7382194199697955,
+    "future_matched": 0.7234312095496512,
+    "last_session": 0.7038600392692946,
+    "loso": 0.7679431439314629,
+    "loso_matched": 0.7460806427258749
+  },
+  "ranking_inversion": [
+    {
+      "dataset": "BNCI2014_004",
+      "n_subjects": 9,
+      "models": [
+        "csp_lda",
+        "ts_lr"
+      ],
+      "means_loso": {
+        "ts_lr": 0.8089423107205846,
+        "csp_lda": 0.7954927839191233
+      },
+      "means_forward_expanding": {
+        "ts_lr": 0.8075052162068532,
+        "csp_lda": 0.783990870653817
+      },
+      "order_loso": [
+        "ts_lr",
+        "csp_lda"
+      ],
+      "order_forward": [
+        "ts_lr",
+        "csp_lda"
+      ],
+      "inverted": false
+    },
+    {
+      "dataset": "Kumar2024",
+      "n_subjects": 18,
+      "models": [
+        "csp_lda",
+        "ts_lr"
+      ],
+      "means_loso": {
+        "ts_lr": 0.8430933641975309,
+        "csp_lda": 0.8249529320987654
+      },
+      "means_forward_expanding": {
+        "ts_lr": 0.8010648148148148,
+        "csp_lda": 0.7796813271604939
+      },
+      "order_loso": [
+        "ts_lr",
+        "csp_lda"
+      ],
+      "order_forward": [
+        "ts_lr",
+        "csp_lda"
+      ],
+      "inverted": false
+    },
+    {
+      "dataset": "Ma2020",
+      "n_subjects": 25,
+      "models": [
+        "csp_lda",
+        "ts_lr"
+      ],
+      "means_loso": {
+        "ts_lr": 0.7473785714285713,
+        "csp_lda": 0.67855
+      },
+      "means_forward_expanding": {
+        "ts_lr": 0.7110500000000001,
+        "csp_lda": 0.6484142857142856
+      },
+      "order_loso": [
+        "ts_lr",
+        "csp_lda"
+      ],
+      "order_forward": [
+        "ts_lr",
+        "csp_lda"
+      ],
+      "inverted": false
+    },
+    {
+      "dataset": "Stieger2021",
+      "n_subjects": 62,
+      "models": [
+        "csp_lda",
+        "eegnet",
+        "ts_lr"
+      ],
+      "means_loso": {
+        "eegnet": 0.8817059638739531,
+        "ts_lr": 0.8608776264940713,
+        "csp_lda": 0.7304176919975407
+      },
+      "means_forward_expanding": {
+        "ts_lr": 0.8310592831023504,
+        "eegnet": 0.8005477098928857,
+        "csp_lda": 0.6961506009442017
+      },
+      "order_loso": [
+        "eegnet",
+        "ts_lr",
+        "csp_lda"
+      ],
+      "order_forward": [
+        "ts_lr",
+        "eegnet",
+        "csp_lda"
+      ],
+      "inverted": true,
+      "top2_loso": {
+        "pair": "eegnet - ts_lr",
+        "diff": 0.020828337379882322,
+        "p_twosided": 0.006717816388034079,
+        "n": 62
+      },
+      "top2_forward_expanding": {
+        "pair": "eegnet - ts_lr",
+        "diff": -0.030511573209465088,
+        "p_twosided": 0.00043007181637618765,
+        "n": 62
+      }
+    },
+    {
+      "dataset": "Zhou2016",
+      "n_subjects": 4,
+      "models": [
+        "csp_lda",
+        "ts_lr"
+      ],
+      "means_loso": {
+        "ts_lr": 0.913837037037037,
+        "csp_lda": 0.8477864197530864
+      },
+      "means_forward_expanding": {
+        "ts_lr": 0.9126135802469136,
+        "csp_lda": 0.8322308641975309
+      },
+      "order_loso": [
+        "ts_lr",
+        "csp_lda"
+      ],
+      "order_forward": [
+        "ts_lr",
+        "csp_lda"
+      ],
+      "inverted": false
+    },
+    {
+      "dataset": "Zhou2020",
+      "n_subjects": 20,
+      "models": [
+        "csp_lda",
+        "ts_lr"
+      ],
+      "means_loso": {
+        "ts_lr": 0.6785528759906594,
+        "csp_lda": 0.6280741580412568
+      },
+      "means_forward_expanding": {
+        "ts_lr": 0.6582387320161185,
+        "csp_lda": 0.6076946101259199
+      },
+      "order_loso": [
+        "ts_lr",
+        "csp_lda"
+      ],
+      "order_forward": [
+        "ts_lr",
+        "csp_lda"
+      ],
+      "inverted": false
+    }
+  ],
+  "model_ranking": [
+    {
+      "protocol": "loso",
+      "n_subjects_common": 62,
+      "ranking": "eegnet > ts_lr > csp_lda",
+      "auc_csp_lda": 0.7315451193912496,
+      "auc_ts_lr": 0.8608556857745974,
+      "auc_eegnet": 0.8841717120855073
+    },
+    {
+      "protocol": "forward_expanding",
+      "n_subjects_common": 62,
+      "ranking": "ts_lr > eegnet > csp_lda",
+      "auc_csp_lda": 0.6987273980396176,
+      "auc_ts_lr": 0.832240682750236,
+      "auc_eegnet": 0.8039279485936877
+    }
+  ],
+  "deployment_table": [
+    {
+      "session": 1,
+      "loso": 0.6972499999999999,
+      "forward": 0.5971500000000001,
+      "difference": 0.10009999999999986
+    },
+    {
+      "session": 2,
+      "loso": 0.6951999999999999,
+      "forward": 0.62095,
+      "difference": 0.07424999999999993
+    },
+    {
+      "session": 3,
+      "loso": 0.7188,
+      "forward": 0.6644,
+      "difference": 0.054400000000000004
+    },
+    {
+      "session": 5,
+      "loso": 0.7188500000000001,
+      "forward": 0.6968000000000001,
+      "difference": 0.022050000000000014
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "archive": "output/reproducibility/loso_ieee_access_supplement.zip",
+  "sha256": "e5e5bbbd4b584151b7478dc20d941805c9662fecf092f5dafb3bd5ac2c71821d",
+  "bytes": 2348868,
+  "files": 129,
+  "contains_raw_eeg": false,
+  "scope": "IEEE Access source, pinned direct dependencies, classical-model result data, vector figures, and reproducibility code"
+}

@@ -14,6 +14,7 @@ import importlib.metadata
 import platform
 import re
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import numpy as np
@@ -27,6 +28,42 @@ from src.config import (CLASSICAL_MODELS, MATCHED_DRAWS, MODELS,
                         PROPOSAL_ALIASES, PROTOCOLS, RANDOM_STATE,
                         RESAMPLE_HZ, RESULTS_DIR,
                         ROBUSTNESS_SUBJECTS)  # noqa: E402
+
+
+SCIENTIFIC_FIGURE_WIDTHS_PT = {
+    stem: (85.29 if stem == "fig5_ma_time_unit" else 177.53) / 25.4 * 72
+    for stem in (
+        "fig0_protocol_logic", "fig1_gap_forest", "fig2_estimands_distribution",
+        "fig3_history_by_dataset", "fig4_drift_facets", "fig5_ma_time_unit",
+        "fig6_decoder_margins",
+    )
+}
+
+
+def check_vector_figure(figure, errors):
+    """Validate scientific vector companions and their final publication width."""
+    for suffix in (".pdf", ".svg"):
+        if not figure.with_suffix(suffix).is_file():
+            errors.append(f"missing results/figures/{figure.stem}{suffix}")
+    svg = figure.with_suffix(".svg")
+    if not svg.is_file():
+        return None
+    try:
+        attributes = ET.parse(svg).getroot().attrib
+        dimensions = (attributes["width"], attributes["height"])
+        if any(not value.endswith("pt") for value in dimensions):
+            raise ValueError("SVG dimensions must be expressed in points")
+        width, height = (float(value[:-2]) for value in dimensions)
+    except (OSError, ET.ParseError, KeyError, ValueError) as exc:
+        errors.append(f"cannot read {svg.name} canvas dimensions: {exc}")
+        return None
+    expected_width = SCIENTIFIC_FIGURE_WIDTHS_PT.get(figure.stem, 177.53 / 25.4 * 72)
+    if not np.isfinite(width) or not np.isclose(width, expected_width, atol=1e-3, rtol=0):
+        errors.append(
+            f"{svg.name}: width {width} pt, expected {expected_width:.6f} pt")
+    if not np.isfinite(height) or height <= 0:
+        errors.append(f"{svg.name}: height must be positive and finite, got {height} pt")
+    return dimensions
 
 
 def check_frame(path, keys, errors):
@@ -187,7 +224,7 @@ def raw_cache_audit():
                 errors.append(f"structural zeros fail; max |delta|={delta.max()}")
 
     # Major-revision outputs: Ma2020 day-level refits, revised estimands, and
-    # fixed-size editable SVG sources used by the manuscript.
+    # publication-width editable SVG sources used by the manuscript.
     day_path = RESULTS_DIR / "sensitivity" / "ma2020_day_level.csv"
     day = check_frame(
         day_path, ["dataset", "subject", "model", "protocol", "target_day"],
@@ -218,25 +255,11 @@ def raw_cache_audit():
         if set(estimands) != {"conditional", "all_origin"}:
             errors.append("revision summary: missing conditional/all-origin estimands")
 
-    svg_names = [
-        "fig0_protocol_logic.svg", "fig1_gap_forest.svg", "fig2_estimands_distribution.svg",
-        "fig3_history_by_dataset.svg", "fig4_drift_facets.svg",
-        "fig5_ma_time_unit.svg",
-    ]
     svg_dimensions = set()
-    for name in svg_names:
-        path = RESULTS_DIR / "figures" / name
-        if not path.exists():
-            errors.append(f"missing results/figures/{name}")
-            continue
-        match = re.search(r'<svg[^>]+width="([^"]+)"[^>]+height="([^"]+)"',
-                          path.read_text()[:2000])
-        if match is None:
-            errors.append(f"cannot read SVG dimensions for {name}")
-        else:
-            svg_dimensions.add(match.groups())
-    if len(svg_dimensions) > 1:
-        errors.append(f"revised SVG canvases differ: {sorted(svg_dimensions)}")
+    for stem in SCIENTIFIC_FIGURE_WIDTHS_PT:
+        dimensions = check_vector_figure(RESULTS_DIR / "figures" / stem, errors)
+        if dimensions is not None:
+            svg_dimensions.add(dimensions)
 
     module_names = {
         "moabb": "moabb", "mne": "mne", "pyriemann": "pyriemann",
@@ -440,7 +463,6 @@ def submitted_classical_audit(root=ROOT):
                     if not np.isclose(reported.get(key, np.nan), expected, atol=1e-12, rtol=0):
                         errors.append(f"revision_summary.json: {label}/{key} disagrees")
 
-    svg_dimensions = set()
     manuscript = root / "paper" / "main.tex"
     if not manuscript.is_file():
         errors.append("missing paper/main.tex")
@@ -448,20 +470,12 @@ def submitted_classical_audit(root=ROOT):
         figure_names = re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}",
                                   manuscript.read_text())
         for name in figure_names:
+            # Raster portraits are checked by manuscript compilation, not the
+            # scientific-plot requirement for editable SVG and vector PDF pairs.
+            if Path(name).suffix.lower() in {".jpg", ".jpeg", ".png"}:
+                continue
             figure = results / "figures" / Path(name).name
-            for suffix in (".pdf", ".svg"):
-                if not figure.with_suffix(suffix).is_file():
-                    errors.append(f"missing results/figures/{figure.stem}{suffix}")
-            svg = figure.with_suffix(".svg")
-            if svg.is_file():
-                match = re.search(r'<svg[^>]+width="([^"]+)"[^>]+height="([^"]+)"',
-                                  svg.read_text()[:2000])
-                if match:
-                    svg_dimensions.add(match.groups())
-                else:
-                    errors.append(f"cannot read {svg.name} canvas dimensions")
-    if len(svg_dimensions) > 1:
-        errors.append("manuscript SVG canvas dimensions differ")
+            check_vector_figure(figure, errors)
     packages = {}
     for package in ("numpy", "pandas", "scipy", "matplotlib", "statsmodels"):
         try:

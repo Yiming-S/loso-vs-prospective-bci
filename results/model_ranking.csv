@@ -1,0 +1,3 @@
+protocol,n_subjects_common,ranking,auc_csp_lda,auc_ts_lr,auc_eegnet
+loso,62,eegnet > ts_lr > csp_lda,0.7315451193912496,0.8608556857745974,0.8841717120855073
+forward_expanding,62,ts_lr > eegnet > csp_lda,0.6987273980396176,0.832240682750236,0.8039279485936877

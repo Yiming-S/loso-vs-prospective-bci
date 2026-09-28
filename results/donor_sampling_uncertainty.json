@@ -1,0 +1,126 @@
+{
+  "conditional": {
+    "donor_se": {
+      "participants": 138,
+      "rows": 2002,
+      "targets": 1001,
+      "draws": [
+        5
+      ],
+      "triangle_se_bound": 0.018016956299323733,
+      "realistic_se_shared_decoder_draws": 0.0007266088673534657,
+      "independent_rows_se": 0.000561410510498425
+    },
+    "composition": {
+      "n": 138,
+      "mean": 0.009296833752340689,
+      "se_participant": 0.0022058943060750645,
+      "se_donor": 0.0007266088673534657,
+      "se_total": 0.0023224836136539425,
+      "ci_conditional_on_draws": [
+        0.004934829500488683,
+        0.013658838004192694
+      ],
+      "ci_with_donor_sampling": [
+        0.004704282164662593,
+        0.013889385340018785
+      ],
+      "donor_share_of_variance": 0.09788047542982192
+    },
+    "count": {
+      "n": 138,
+      "mean": 0.025465420436336896,
+      "se_participant": 0.001814119131722855,
+      "se_donor": 0.0007266088673534657,
+      "se_total": 0.0019542232907729788,
+      "ci_conditional_on_draws": [
+        0.02187812464245044,
+        0.029052716230223354
+      ],
+      "ci_with_donor_sampling": [
+        0.021601078305372678,
+        0.029329762567301115
+      ],
+      "donor_share_of_variance": 0.1382461409839942
+    },
+    "total_mean": 0.03476225418867759
+  },
+  "strict_future": {
+    "donor_se_matched": {
+      "participants": 138,
+      "rows": 1120,
+      "targets": 560,
+      "draws": [
+        5
+      ],
+      "triangle_se_bound": 0.022099355778247266,
+      "realistic_se_shared_decoder_draws": 0.0011521967265144414,
+      "independent_rows_se": 0.0008755348757312068
+    },
+    "donor_se_future": {
+      "participants": 138,
+      "rows": 1120,
+      "targets": 560,
+      "draws": [
+        5
+      ],
+      "triangle_se_bound": 0.015435434984450585,
+      "realistic_se_shared_decoder_draws": 0.000906056800768266,
+      "independent_rows_se": 0.0006878282642824115
+    },
+    "composition": {
+      "n": 138,
+      "mean": 0.012828531768731893,
+      "se_participant": 0.0035347245058016154,
+      "se_donor": 0.0011521967265144414,
+      "se_total": 0.0037177728048530707,
+      "ci_conditional_on_draws": [
+        0.005838857204103205,
+        0.01981820633336058
+      ],
+      "ci_with_donor_sampling": [
+        0.005476891784201734,
+        0.020180171753262054
+      ],
+      "donor_share_of_variance": 0.09604783534688979
+    },
+    "count": {
+      "n": 138,
+      "mean": 0.04010765538128498,
+      "se_participant": 0.0026369874956186164,
+      "se_donor": 0.0011521967265144414,
+      "se_total": 0.0028777179063694787,
+      "ci_conditional_on_draws": [
+        0.03489319400102266,
+        0.04532211676154731
+      ],
+      "ci_with_donor_sampling": [
+        0.03441716617305582,
+        0.045798144589514145
+      ],
+      "donor_share_of_variance": 0.16030860529686022
+    },
+    "future_minus_expanding": {
+      "n": 138,
+      "mean": 0.016520058241131296,
+      "se_participant": 0.0046709797019606316,
+      "se_donor": 0.000906056800768266,
+      "se_total": 0.0047580447982702575,
+      "ci_conditional_on_draws": [
+        0.007283517186487785,
+        0.025756599295774806
+      ],
+      "ci_with_donor_sampling": [
+        0.007111351947543844,
+        0.02592876453471875
+      ],
+      "donor_share_of_variance": 0.036262170496770364
+    },
+    "total_mean": 0.052936187150016877
+  },
+  "seed_sharing": {
+    "subject_T_pairs": 135,
+    "pairs_shared_across_datasets": 3,
+    "note": "per-draw AUCs are not stored; the aggregate Monte Carlo covariance is not identifiable from the cached summaries"
+  }
+}

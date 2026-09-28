@@ -2,21 +2,24 @@
 \begin{table*}[!t]
 \centering
 \settableformat
-\caption{Reference-dependent descriptive decomposition. Uniform donor-session-count matching is analyzed on the full conditional support and, separately, on the strict-future support required by the future-only reference. The two uniform-reference components sum to the total contrast within each support. Matching session count does not match trial count.}
+\caption{Partition of the LOSO minus expanding-window difference under the session-count-matched reference (Equation~\eqref{eq:partition}), on the full conditional support and on the strict-future support required by the future-only arm. The two components sum to the total within each support, up to rounding. All intervals are participant-level $t$ intervals; those involving a sampled arm condition on the five realized donor draws (Appendix~\ref{app:uncertainty}).}
 \label{tab:common-support}
-\begin{tabularx}{0.80\textwidth}{@{}>{\raggedright\arraybackslash}Xrr@{}}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X S[table-format=3.0] S[table-format=+1.3,retain-explicit-plus=true] r@{}}
 \toprule
-Contrast & Participants & Mean AUC difference [95\% CI] \\
+\textbf{Contrast} & {\textbf{Participants}} & {\textbf{Mean $\boldsymbol{\Delta}$}} & \textbf{95\% CI} \\
 \midrule
-\multicolumn{3}{@{}l}{\textit{Later donor available: 1,001 participant--targets}} \\
-LOSO $-$ expanding window & 138 & +0.0348 [+0.0297, +0.0398] \\
-LOSO $-$ donor-count-matched reference & 138 & +0.0255 [+0.0219, +0.0291] \\
-Donor-count-matched reference $-$ expanding window & 138 & +0.0093 [+0.0049, +0.0137] \\
-\multicolumn{3}{@{}l}{\textit{Strict-future common support: 560 participant--targets}} \\
-LOSO $-$ expanding window & 138 & +0.0529 [+0.0452, +0.0607] \\
-LOSO $-$ donor-count-matched reference & 138 & +0.0401 [+0.0349, +0.0453] \\
-Donor-count-matched reference $-$ expanding window & 138 & +0.0128 [+0.0058, +0.0198] \\
-Strict future $-$ expanding window & 138 & +0.0165 [+0.0073, +0.0258] \\
+\multicolumn{4}{@{}l}{\textit{Later donor available: 1,001 participant--targets}} \\
+\addlinespace[0.2em]
+LOSO $-$ expanding window & 138 & +0.035 & $[+0.030, +0.040]$ \\
+LOSO $-$ session-count-matched reference & 138 & +0.025 & $[+0.022, +0.029]$ \\
+Session-count-matched reference $-$ expanding window & 138 & +0.009 & $[+0.005, +0.014]$ \\
+\addlinespace[0.5em]
+\multicolumn{4}{@{}l}{\textit{Strict-future common support: 560 participant--targets}} \\
+\addlinespace[0.2em]
+LOSO $-$ expanding window & 138 & +0.053 & $[+0.045, +0.061]$ \\
+LOSO $-$ session-count-matched reference & 138 & +0.040 & $[+0.035, +0.045]$ \\
+Session-count-matched reference $-$ expanding window & 138 & +0.013 & $[+0.006, +0.020]$ \\
+Strict future $-$ expanding window & 138 & +0.017 & $[+0.007, +0.026]$ \\
 \bottomrule
 \end{tabularx}
 \end{table*}

@@ -2,22 +2,28 @@
 \begin{table}[!t]
 \centering
 \settableformat
-\caption{Observed participant-specific decoder ordering and illustrative threshold crossings ($n=138$). Arrows go from LOSO to expanding-window ordering. Bilateral margins require both absolute TS+LR-minus-CSP+LDA mean AUC differences to exceed the threshold. Threshold crossings average both decoders and targets within participant. These are descriptive point-estimate comparisons.}
+\caption{Observed participant-specific decoder ordering and threshold crossings ($n=138$). Arrows go from LOSO to expanding-window ordering. Bilateral margins require both absolute TS+LR-minus-CSP+LDA mean AUC differences to exceed the threshold. Threshold crossings average both decoders and targets within participant.}
 \label{tab:decisions}
-\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}Xrr@{}}
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}X S[table-format=3.0] S[table-format=3.0]@{}}
 \toprule
-Outcome & All origins & Conditional \\
+\textbf{Outcome} & {\textbf{Conditional (primary)}} & {\textbf{All origins}} \\
 \midrule
-Opposite decoder ordering & 14 (10.1\%) & 19 (13.8\%) \\ 
-CSP+LDA $\to$ TS+LR & 10 & 15 \\ 
+Opposite ordering & \multicolumn{1}{r}{19 (13.8\%)} & \multicolumn{1}{r}{14 (10.1\%)} \\
+CSP+LDA $\to$ TS+LR & 15 & 10 \\ 
 TS+LR $\to$ CSP+LDA & 4 & 4 \\ 
-Flip, both margins $>0.005$ & 7 & 11 \\
-Flip, both margins $>0.01$ & 1 & 6 \\
-Flip, both margins $>0.02$ & 1 & 1 \\
-LOSO-only AUC $\geq0.70$ & 13 & 16 \\ 
-Expanding-only AUC $\geq0.70$ & 1 & 1 \\ 
-LOSO-only AUC $\geq0.75$ & 22 & 31 \\ 
-Expanding-only AUC $\geq0.75$ & 0 & 0 \\ 
+\addlinespace[0.4em]
+\multicolumn{3}{@{}l}{\textit{Opposite ordering with both margins above}} \\
+$0.005$ AUC & 11 & 7 \\
+$0.01$ AUC & 6 & 1 \\
+$0.02$ AUC & 1 & 1 \\
+\addlinespace[0.4em]
+\multicolumn{3}{@{}l}{\textit{AUC $\geq 0.70$ under one protocol only}} \\
+LOSO only & 16 & 13 \\
+Expanding window only & 1 & 1 \\
+\addlinespace[0.4em]
+\multicolumn{3}{@{}l}{\textit{AUC $\geq 0.75$ under one protocol only}} \\
+LOSO only & 31 & 22 \\
+Expanding window only & 0 & 0 \\
 \bottomrule
 \end{tabularx}
 \end{table}

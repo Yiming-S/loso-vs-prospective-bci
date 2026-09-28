@@ -7,6 +7,7 @@ from pathlib import Path
 import shutil
 import tempfile
 import unittest
+import xml.etree.ElementTree as ET
 
 import pandas as pd
 
@@ -76,6 +77,60 @@ class SubmittedClassicalAuditTests(unittest.TestCase):
         self.assertFalse(result["ok"])
         self.assertTrue(any("conditional participant estimate disagrees" in item
                             for item in result["errors"]))
+
+    def replace_svg_dimensions(self, stem, **dimensions):
+        path = self.root / "results" / "figures" / f"{stem}.svg"
+        document = ET.parse(path)
+        document.getroot().attrib.update(dimensions)
+        document.write(path)
+
+    def test_wrong_scientific_figure_width_fails(self):
+        for stem in ("fig2_estimands_distribution", "fig5_ma_time_unit"):
+            with self.subTest(figure=stem):
+                self.replace_svg_dimensions(stem, width="123pt")
+                result = AUDIT.submitted_classical_audit(self.root)
+                self.assertFalse(result["ok"])
+                self.assertTrue(any(f"{stem}.svg: width" in item
+                                    for item in result["errors"]))
+                self.replace_svg_dimensions(
+                    stem, width=f"{AUDIT.SCIENTIFIC_FIGURE_WIDTHS_PT[stem]}pt")
+
+    def test_missing_vector_companion_fails(self):
+        for suffix in (".svg", ".pdf"):
+            with self.subTest(suffix=suffix):
+                name = f"fig6_decoder_margins{suffix}"
+                path = self.root / "results" / "figures" / name
+                path.unlink()
+                result = AUDIT.submitted_classical_audit(self.root)
+                self.assertFalse(result["ok"])
+                self.assertIn(f"missing results/figures/{name}", result["errors"])
+                shutil.copy2(ROOT / "results" / "figures" / name, path)
+
+    def test_different_positive_figure_heights_pass(self):
+        self.replace_svg_dimensions("fig2_estimands_distribution", height="180pt")
+        self.replace_svg_dimensions("fig5_ma_time_unit", height="210pt")
+        result = AUDIT.submitted_classical_audit(self.root)
+        self.assertTrue(result["ok"], result["errors"])
+
+    def test_nonpositive_or_nonfinite_figure_height_fails(self):
+        for height in ("0pt", "-1pt", "nanpt", "infpt"):
+            with self.subTest(height=height):
+                self.replace_svg_dimensions("fig6_decoder_margins", height=height)
+                result = AUDIT.submitted_classical_audit(self.root)
+                self.assertFalse(result["ok"])
+                self.assertTrue(any("height must be positive and finite" in item
+                                    for item in result["errors"]))
+
+    def test_raster_portraits_do_not_require_vector_companions(self):
+        manuscript = self.root / "paper" / "main.tex"
+        manuscript.write_text(manuscript.read_text() + "\n" +
+                              r"\includegraphics{test_portrait.jpg}" + "\n" +
+                              r"\includegraphics{test_portrait.png}" + "\n")
+        result = AUDIT.submitted_classical_audit(self.root)
+        self.assertTrue(result["ok"], result["errors"])
+
+    def test_raw_cache_figure_inventory_includes_decoder_margins(self):
+        self.assertIn("fig6_decoder_margins", AUDIT.SCIENTIFIC_FIGURE_WIDTHS_PT)
 
 
 if __name__ == "__main__":

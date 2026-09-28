@@ -1,0 +1,79 @@
+{
+  "first_session/CSP+LDA": {
+    "n_moabb": 0,
+    "n_paper": 36,
+    "n_matched": 0,
+    "mean_auc_moabb": NaN,
+    "mean_auc_paper": 0.7536489532155456,
+    "max_abs_diff": NaN,
+    "mean_abs_diff": NaN
+  },
+  "first_session/TS+LR": {
+    "n_moabb": 0,
+    "n_paper": 36,
+    "n_matched": 0,
+    "mean_auc_moabb": NaN,
+    "mean_auc_paper": 0.7968835919784579,
+    "max_abs_diff": NaN,
+    "mean_abs_diff": NaN
+  },
+  "forward_expanding/CSP+LDA": {
+    "n_moabb": 36,
+    "n_paper": 36,
+    "n_matched": 36,
+    "mean_auc_moabb": 0.7843307852745056,
+    "mean_auc_paper": 0.7839908706538172,
+    "max_abs_diff": 0.003749990463256858,
+    "mean_abs_diff": 0.0008857913827019072
+  },
+  "forward_expanding/TS+LR": {
+    "n_moabb": 36,
+    "n_paper": 36,
+    "n_matched": 36,
+    "mean_auc_moabb": 0.8078257441520691,
+    "mean_auc_paper": 0.807505216206853,
+    "max_abs_diff": 0.0026562404632568537,
+    "mean_abs_diff": 0.000787303464092519
+  },
+  "last_session/CSP+LDA": {
+    "n_moabb": 0,
+    "n_paper": 36,
+    "n_matched": 0,
+    "mean_auc_moabb": NaN,
+    "mean_auc_paper": 0.7771607201908541,
+    "max_abs_diff": NaN,
+    "mean_abs_diff": NaN
+  },
+  "last_session/TS+LR": {
+    "n_moabb": 0,
+    "n_paper": 36,
+    "n_matched": 0,
+    "mean_auc_moabb": NaN,
+    "mean_auc_paper": 0.8050544060216679,
+    "max_abs_diff": NaN,
+    "mean_abs_diff": NaN
+  },
+  "loso/CSP+LDA": {
+    "n_moabb": 45,
+    "n_paper": 45,
+    "n_matched": 45,
+    "mean_auc_moabb": 0.7796494364738464,
+    "mean_auc_paper": 0.7792835018266567,
+    "max_abs_diff": 0.003749990463256858,
+    "mean_abs_diff": 0.0008711462811998466
+  },
+  "loso/TS+LR": {
+    "n_moabb": 45,
+    "n_paper": 45,
+    "n_matched": 45,
+    "mean_auc_moabb": 0.7927265763282776,
+    "mean_auc_paper": 0.7924528454900478,
+    "max_abs_diff": 0.0026562404632568537,
+    "mean_abs_diff": 0.0007344780101617519
+  },
+  "forward_splits_per_subject_pipeline": [
+    4
+  ],
+  "forward_min_target_session": 1,
+  "forward_n_train_at_t1": null
+}
